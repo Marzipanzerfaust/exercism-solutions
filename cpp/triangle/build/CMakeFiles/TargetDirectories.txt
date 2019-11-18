@@ -1,0 +1,4 @@
+/home/jeffrey/sync/programs/exercism/cpp/triangle/build/CMakeFiles/rebuild_cache.dir
+/home/jeffrey/sync/programs/exercism/cpp/triangle/build/CMakeFiles/triangle.dir
+/home/jeffrey/sync/programs/exercism/cpp/triangle/build/CMakeFiles/edit_cache.dir
+/home/jeffrey/sync/programs/exercism/cpp/triangle/build/CMakeFiles/test_triangle.dir

@@ -1,0 +1,4 @@
+/home/jeffrey/sync/programs/exercism/cpp/robot-name/build/CMakeFiles/edit_cache.dir
+/home/jeffrey/sync/programs/exercism/cpp/robot-name/build/CMakeFiles/robot-name.dir
+/home/jeffrey/sync/programs/exercism/cpp/robot-name/build/CMakeFiles/rebuild_cache.dir
+/home/jeffrey/sync/programs/exercism/cpp/robot-name/build/CMakeFiles/test_robot-name.dir

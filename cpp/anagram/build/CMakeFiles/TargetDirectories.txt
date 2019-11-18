@@ -1,0 +1,4 @@
+/home/jeffrey/sync/programs/exercism/cpp/anagram/build/CMakeFiles/rebuild_cache.dir
+/home/jeffrey/sync/programs/exercism/cpp/anagram/build/CMakeFiles/edit_cache.dir
+/home/jeffrey/sync/programs/exercism/cpp/anagram/build/CMakeFiles/anagram.dir
+/home/jeffrey/sync/programs/exercism/cpp/anagram/build/CMakeFiles/test_anagram.dir

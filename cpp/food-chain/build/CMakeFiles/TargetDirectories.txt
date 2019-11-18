@@ -1,0 +1,4 @@
+/home/jeffrey/sync/programs/exercism/cpp/food-chain/build/CMakeFiles/rebuild_cache.dir
+/home/jeffrey/sync/programs/exercism/cpp/food-chain/build/CMakeFiles/edit_cache.dir
+/home/jeffrey/sync/programs/exercism/cpp/food-chain/build/CMakeFiles/food-chain.dir
+/home/jeffrey/sync/programs/exercism/cpp/food-chain/build/CMakeFiles/test_food-chain.dir
