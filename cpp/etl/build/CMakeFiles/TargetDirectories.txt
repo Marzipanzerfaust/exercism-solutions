@@ -1,4 +1,0 @@
-/home/jeffrey/sync/programs/exercism/cpp/etl/build/CMakeFiles/rebuild_cache.dir
-/home/jeffrey/sync/programs/exercism/cpp/etl/build/CMakeFiles/edit_cache.dir
-/home/jeffrey/sync/programs/exercism/cpp/etl/build/CMakeFiles/etl.dir
-/home/jeffrey/sync/programs/exercism/cpp/etl/build/CMakeFiles/test_etl.dir

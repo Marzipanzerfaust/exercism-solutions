@@ -1,2 +1,0 @@
-# Hashes of file build rules.
-e264c64d01c26f12f3c302cc9626c236 CMakeFiles/test_triangle

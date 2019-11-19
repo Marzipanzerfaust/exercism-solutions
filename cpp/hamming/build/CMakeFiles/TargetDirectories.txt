@@ -1,4 +1,0 @@
-/home/jeffrey/sync/programs/exercism/cpp/hamming/build/CMakeFiles/rebuild_cache.dir
-/home/jeffrey/sync/programs/exercism/cpp/hamming/build/CMakeFiles/edit_cache.dir
-/home/jeffrey/sync/programs/exercism/cpp/hamming/build/CMakeFiles/hamming.dir
-/home/jeffrey/sync/programs/exercism/cpp/hamming/build/CMakeFiles/test_hamming.dir
