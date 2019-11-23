@@ -18,7 +18,7 @@ class Transpose
     end
 
     # Replace any intermediate nils with spaces
-    out.map! { |row| row.map { |char| char || " " } }
+    out.each { |row| row.map! { |char| char || " " } }
 
     out.map!(&:join)
 
