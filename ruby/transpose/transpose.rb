@@ -1,8 +1,27 @@
-=begin
-Write your code for the 'Transpose' exercise in this file. Make the tests in
-`transpose_test.rb` pass.
+class Transpose
+  def self.transpose(input)
+    return "" if input.empty?
 
-To get started with TDD, see the `README.md` file in your
-`ruby/transpose` directory.
-=end
+    array = input.split("\n")
+    largest_size = array.map(&:size).max
 
+    out = []
+
+    largest_size.times do |i|
+      out << array.map { |row| row[i] }
+    end
+
+    # Remove trailing nils
+    out.map! do |row|
+      last_idx = row.size.times.select { |i| row[i] }.max
+      row[0..last_idx]
+    end
+
+    # Replace any intermediate nils with spaces
+    out.map! { |row| row.map { |char| char || " " } }
+
+    out.map!(&:join)
+
+    return out.join("\n")
+  end
+end
