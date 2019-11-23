@@ -1,83 +1,80 @@
-class Deque
-  def initialize
-    @head = nil
-    @tail = nil
+# The Deque class that we are being asked to implement could be done
+# very easily using a Ruby array, so we will avoid that if possible
 
-    @size = 0
+class Deque
+  attr_reader :head, :tail
+
+  def initialize
+    @head = @tail = nil
   end
 
   def push(x)
     new_tail = Node.new(x)
 
-    if @size.zero?
-      @tail = new_tail
-      @head = @tail
-    else
-      old_tail = @tail
-      new_tail.prev = old_tail
-      @tail = new_tail
+    if @tail
+      @tail.next = new_tail
+      new_tail.prev = @tail
     end
 
-    @size += 1
+    @tail = new_tail
+
+    @head = @tail unless @head
   end
 
   def pop
+    return unless @tail
+
     old_tail = @tail
-    @tail = @tail.prev
-    @tail.next = nil
+    new_tail = @tail.prev
 
-    @size -= 1
-
-    @head = @tail if @size <= 1
+    if new_tail.nil?
+      @head = @tail = nil
+    else
+      new_tail.next = nil
+      @tail = new_tail
+    end
 
     return old_tail.value
   end
 
-  def unshift(x)
-    new_head = Node.new(x)
+  # shift is like pop, but it operates on the head instead of the tail
+  def shift
+    return unless @head
 
-    if @size.zero?
-      @head = new_head
-      @tail = head
+    old_head = @head
+    new_head = @head.next
+
+    if new_head.nil?
+      @head = @tail = nil
     else
-      old_head = @head
-      new_head.next = old_head
+      new_head.prev = nil
       @head = new_head
     end
 
-    @size += 1
+    return old_head.value
   end
 
-  def shift
-    old_head = @head
-    @head = @head.next
-    @head.prev = nil
+  # unshift is like push, but it operates on the head instead of the
+  # tail
+  def unshift(x)
+    new_head = Node.new(x)
 
-    @size -= 1
+    if @head
+      @head.prev = new_head
+      new_head.next = @head
+    end
 
-    @tail = @head if @size <= 1
+    @head = new_head
 
-    return old_head.value
+    @tail = @head unless @tail
   end
 end
 
 class Node
-  attr_reader :value
-  attr_accessor :next, :prev
+  attr_accessor :value, :next, :prev
 
-  def initialize(x = nil)
-    @value = x
-  end
-
-  def next!
-
-  def link_next(other)
-    @next = other
-    other.prev = self
-  end
-
-  def link_prev(other)
-    @prev = other
-    other.next = self
+  def initialize(value)
+    @value = value
+    @next = @prev = nil
   end
 end
