@@ -1,7 +1,5 @@
 class Transpose
   def self.transpose(input)
-    return "" if input.empty?
-
     array = input.split("\n")
     largest_size = array.map(&:size).max
 
