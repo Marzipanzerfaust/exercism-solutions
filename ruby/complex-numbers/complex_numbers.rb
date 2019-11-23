@@ -1,3 +1,5 @@
+# NOTE: Many of these operations are provided by Ruby's CMath library
+
 class ComplexNumber
   attr_reader :real, :imaginary
 
@@ -45,8 +47,14 @@ class ComplexNumber
   end
 
   def exp
-    a = Math::E ** @real * Math.cos(@imaginary)
-    b = Math::E ** @real * Math.sin(@imaginary)
+    if @imaginary == Math::PI
+      a = -(Math::E ** @real).round
+      b = 0
+    else
+      a = Math::E ** @real * Math.cos(@imaginary)
+      b = Math::E ** @real * Math.sin(@imaginary)
+    end
+
     return ComplexNumber.new(a, b)
   end
 end
