@@ -4,11 +4,11 @@
 
 int meetup_day_of_month(unsigned int year, unsigned int month,
                         const char week[], const char day_of_week[]) {
-    struct tm last_day = date_new(month + 1, 0, year);
+    tm_t last_day = date_new(month + 1, 0, year);
 
     int day_n = day_to_i(day_of_week);
 
-    struct tm date = date_new(month, 1, year);
+    tm_t date = date_new(month, 1, year);
 
     while (date.tm_mday <= last_day.tm_mday) {
         if (date.tm_wday == day_n)
@@ -28,8 +28,8 @@ int meetup_day_of_month(unsigned int year, unsigned int month,
     return 0;
 }
 
-struct tm date_new(unsigned month, unsigned day, unsigned year) {
-    struct tm out = {.tm_mon = month - 1, .tm_mday = day, .tm_year = year - 1900};
+tm_t date_new(unsigned month, unsigned day, unsigned year) {
+    tm_t out = {.tm_mon = month - 1, .tm_mday = day, .tm_year = year - 1900};
     mktime(&out);
     return out;
 }
@@ -77,6 +77,6 @@ bool is_fifth(int n) {
     return n >= 29;
 }
 
-bool is_last(int n, const struct tm* end_date) {
+bool is_last(int n, const tm_t* end_date) {
     return n >= end_date->tm_mday - 6 && n <= end_date->tm_mday;
 }

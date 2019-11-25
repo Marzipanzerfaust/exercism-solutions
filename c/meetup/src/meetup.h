@@ -7,6 +7,8 @@
 
 int meetup_day_of_month(unsigned int, unsigned int, const char[], const char[]);
 
+typedef struct tm tm_t;
+
 struct tm date_new(unsigned, unsigned, unsigned);
 int day_to_i(const char[]);
 bool is_teenth(int);
