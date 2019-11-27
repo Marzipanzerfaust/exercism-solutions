@@ -112,7 +112,7 @@ class Node
 
   # Overriding Enumerable#to_a since it depends on #each, which we need
   # this to define
-  def to_a(accumulator = [] of Int32)
+  def to_a(accumulator = [] of Int32) : Array(Int32)
     @left.try(&.to_a(accumulator))
     accumulator << @value
     @right.try(&.to_a(accumulator))
