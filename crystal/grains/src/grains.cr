@@ -7,7 +7,7 @@ class Grains
 
   def self.total : UInt64
     # This could be written as:
-    #   1.upto(64).sum { |i| square(i) }
+    #   (1..64).sum { |i| square(i) }
 
     # But, mathematically, we should know that the sum of the first k
     # powers of 2 (including 2^0) is 2^(k+1) - 1.  If k = 64, it is
