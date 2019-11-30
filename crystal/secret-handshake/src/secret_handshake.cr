@@ -1,5 +1,5 @@
 module SecretHandshake
-  def self.commands(n)
+  def self.commands(n : Int) : Array(String)
     out = [] of String
 
     out << "wink"            if n & 0b1     != 0
