@@ -9,7 +9,8 @@ class Meetup
 
   def day(d, descriptor)
     (@first_day..@last_day).find do |date|
-      date.method("#{d}?").call && method("#{descriptor}?").call(date.day)
+      # date.method("#{d}?").call && method("#{descriptor}?").call(date.day)
+      date.send("#{d}?") && send("#{descriptor}?", date.day)
     end
   end
 
