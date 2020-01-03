@@ -1,5 +1,4 @@
-# Brute force method with caching. Took about 9.63 seconds to run all of
-# the tests on my machine.
+# Brute force method with caching
 
 module PrimeFactors
   @@primes = [2, 3]
