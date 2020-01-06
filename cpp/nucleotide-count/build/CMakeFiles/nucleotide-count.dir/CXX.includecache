@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jeffrey/sync/programs/exercism/cpp/nucleotide-count/nucleotide_count.cpp
+nucleotide_count.h
+/home/jeffrey/sync/programs/exercism/cpp/nucleotide-count/nucleotide_count.h
+
+/home/jeffrey/sync/programs/exercism/cpp/nucleotide-count/nucleotide_count.h
+string
+-
+map
+-
+

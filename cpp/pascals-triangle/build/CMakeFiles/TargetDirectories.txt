@@ -1,0 +1,4 @@
+/home/jeffrey/sync/programs/exercism/cpp/pascals-triangle/build/CMakeFiles/rebuild_cache.dir
+/home/jeffrey/sync/programs/exercism/cpp/pascals-triangle/build/CMakeFiles/edit_cache.dir
+/home/jeffrey/sync/programs/exercism/cpp/pascals-triangle/build/CMakeFiles/pascals-triangle.dir
+/home/jeffrey/sync/programs/exercism/cpp/pascals-triangle/build/CMakeFiles/test_pascals-triangle.dir

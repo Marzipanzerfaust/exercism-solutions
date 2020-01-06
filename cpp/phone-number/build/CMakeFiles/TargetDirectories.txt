@@ -1,0 +1,4 @@
+/home/jeffrey/sync/programs/exercism/cpp/phone-number/build/CMakeFiles/edit_cache.dir
+/home/jeffrey/sync/programs/exercism/cpp/phone-number/build/CMakeFiles/phone-number.dir
+/home/jeffrey/sync/programs/exercism/cpp/phone-number/build/CMakeFiles/rebuild_cache.dir
+/home/jeffrey/sync/programs/exercism/cpp/phone-number/build/CMakeFiles/test_phone-number.dir

@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/food-chain.dir/food_chain_test.cpp.o CMakeFiles/food-chain.dir/food_chain.cpp.o CMakeFiles/food-chain.dir/test/tests-main.cpp.o  -o food-chain 

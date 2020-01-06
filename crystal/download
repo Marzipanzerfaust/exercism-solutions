@@ -1,0 +1,5 @@
+#!/bin/sh
+
+for slug in "$@"; do
+  exercism download --exercise="$slug" --track=crystal
+done

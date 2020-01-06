@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jeffrey/sync/programs/exercism/cpp/isogram/isogram.cpp
+isogram.h
+/home/jeffrey/sync/programs/exercism/cpp/isogram/isogram.h
+
+/home/jeffrey/sync/programs/exercism/cpp/isogram/isogram.h
+string
+/home/jeffrey/sync/programs/exercism/cpp/isogram/string
+map
+/home/jeffrey/sync/programs/exercism/cpp/isogram/map
+regex
+/home/jeffrey/sync/programs/exercism/cpp/isogram/regex
+algorithm
+/home/jeffrey/sync/programs/exercism/cpp/isogram/algorithm
+
