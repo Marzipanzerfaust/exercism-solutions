@@ -3,7 +3,7 @@
 **/*.txt
 !/README.md
 
-# Ignore all hidden files
+# Ignore all hidden files and directories
 **/.*
 !/.gitignore
 
