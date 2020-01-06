@@ -8,7 +8,7 @@ module NthPrime
 
     return @@primes[n - 1] if n <= @@primes.size
 
-    (@@primes.last+1..).each.with_index do |k, i|
+    (@@primes.last+1..).each do |k|
       if @@primes.none? { |x| k.divisible_by?(x) }
         @@primes << k
         break if @@primes.size == n
