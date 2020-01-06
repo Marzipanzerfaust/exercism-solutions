@@ -3,6 +3,10 @@
 **/*.txt
 !/README.md
 
+# Ignore all hidden files
+**/.*
+!/.gitignore
+
 # Ignore all `hello-world` exercises
 **/hello-world
 
@@ -10,7 +14,7 @@
 **/download
 
 # bash
-/bash/*_test.sh
+/bash/**/*_test.sh
 
 # c
 /c/**/test
