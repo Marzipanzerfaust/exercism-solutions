@@ -1,4 +1,0 @@
-/home/jeffrey/sync/programs/exercism/cpp/sum-of-multiples/build/CMakeFiles/edit_cache.dir
-/home/jeffrey/sync/programs/exercism/cpp/sum-of-multiples/build/CMakeFiles/sum-of-multiples.dir
-/home/jeffrey/sync/programs/exercism/cpp/sum-of-multiples/build/CMakeFiles/rebuild_cache.dir
-/home/jeffrey/sync/programs/exercism/cpp/sum-of-multiples/build/CMakeFiles/test_sum-of-multiples.dir

@@ -1,1 +1,0 @@
-/usr/bin/c++     CMakeFiles/grade-school.dir/grade_school_test.cpp.o CMakeFiles/grade-school.dir/grade_school.cpp.o CMakeFiles/grade-school.dir/test/tests-main.cpp.o  -o grade-school 

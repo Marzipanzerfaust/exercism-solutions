@@ -1,4 +1,0 @@
-/home/jeffrey/sync/programs/exercism/cpp/scrabble-score/build/CMakeFiles/edit_cache.dir
-/home/jeffrey/sync/programs/exercism/cpp/scrabble-score/build/CMakeFiles/scrabble-score.dir
-/home/jeffrey/sync/programs/exercism/cpp/scrabble-score/build/CMakeFiles/rebuild_cache.dir
-/home/jeffrey/sync/programs/exercism/cpp/scrabble-score/build/CMakeFiles/test_scrabble-score.dir

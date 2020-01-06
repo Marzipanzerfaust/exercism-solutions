@@ -1,4 +1,0 @@
-/home/jeffrey/sync/programs/exercism/cpp/binary/build/CMakeFiles/edit_cache.dir
-/home/jeffrey/sync/programs/exercism/cpp/binary/build/CMakeFiles/rebuild_cache.dir
-/home/jeffrey/sync/programs/exercism/cpp/binary/build/CMakeFiles/binary.dir
-/home/jeffrey/sync/programs/exercism/cpp/binary/build/CMakeFiles/test_binary.dir

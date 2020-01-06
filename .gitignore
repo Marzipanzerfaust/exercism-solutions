@@ -1,0 +1,80 @@
+# Ignore all markdown and text documents except the top-level README
+**/*.md
+**/*.txt
+!/README.md
+
+# Ignore all `hello-world` exercises
+**/hello-world
+
+# Ignore all `download` scripts
+**/download
+
+# bash
+/bash/*_test.sh
+
+# c
+/c/**/test
+/c/**/makefile
+/c/**/*.out
+
+# coffeescript
+/coffeescript/**/*.spec.coffee
+
+# cpp
+/cpp/**/build
+/cpp/**/test
+/cpp/**/*_test.cpp
+/cpp/**/CMakeLists.txt
+
+# crystal
+/crystal/**/spec
+
+# csharp
+/csharp/**/bin
+/csharp/**/obj
+/csharp/**/*.csproj
+/csharp/**/*Test.cs
+
+# ecmascript
+/ecmascript/**/package.json
+/ecmascript/**/*.spec.js
+
+# elixir
+/elixir/**/_build
+/elixir/**/test
+/elixir/**/mix.exs
+
+# elm
+/elm/**/tests
+/elm/**/elm-package.json
+/elm/**/package.json
+
+# erlang
+/erlang/**/_build
+/erlang/**/test
+/erlang/**/rebar.config
+
+# javascript
+/javascript/**/*.spec.js
+
+# lua
+/lua/**/*_spec.lua
+
+# php
+/php/**/*_test.php
+
+# powershell
+/powershell/**/*.tests.ps1
+
+# python
+/python/**/*_test.py
+
+# ruby
+/ruby/**/*_test.rb
+
+# rust
+/rust/**/tests
+/rust/**/Cargo.toml
+
+# vimscript
+/vimscript/**/*.vader
