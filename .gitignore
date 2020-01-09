@@ -22,7 +22,8 @@
 /c/**/*.out
 
 # coffeescript
-/coffeescript/**/*.spec.coffee
+/coffeescript/**/*spec.coffee
+/coffeescript/**/*.js
 
 # cpp
 /cpp/**/build
