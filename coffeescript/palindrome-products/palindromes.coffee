@@ -26,11 +26,7 @@ class Palindromes
         chars = Array.from(n.toString())
         reverse = chars.slice().reverse()
 
-        for i in [0...chars.length]
-            if chars[i] != reverse[i]
-                return false
-
-        return true
+        return chars.join("") == reverse.join("")
 
     constructor: (kwargs) ->
         @minFactor = kwargs?.minFactor ? 1

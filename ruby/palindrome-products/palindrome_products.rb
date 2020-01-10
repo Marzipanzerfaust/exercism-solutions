@@ -1,52 +1,46 @@
+Palindrome = Struct.new(:value, :factors)
+
 class Palindromes
-  attr_reader :smallest, :largest
+  def self.palindrome?(n)
+    str = n.to_s
+    return str == str.reverse
+  end
 
   def initialize(min_factor: 1, max_factor: 9)
-    @max_factor, @min_factor = max_factor, min_factor
+    @min_factor = min_factor
+    @max_factor = max_factor
+
+    @values_to_factors = {}
   end
 
   def generate
-    range = (@min_factor..@max_factor).to_a
+    (@min_factor..@max_factor).to_a.repeated_combination(2) do |i, j|
+      value = i * j
+      factors = [i, j].sort
 
-    @list = range.product(range)
-      .map { |a, b| a * b }
-      .uniq
-      .select { |n| n.to_s == n.to_s.reverse }
-      .sort
-      .map { |n| Palindrome.new(n, min_factor: @min_factor, max_factor: @max_factor) }
+      if Palindromes.palindrome?(value)
+        if @values_to_factors.has_key?(value)
+          list = @values_to_factors[value]
 
-    @smallest = @list.first
-    @largest = @list.last
-
-    return self
-  end
-end
-
-class Palindrome
-  attr_reader :value, :factors
-
-  def initialize(n, min_factor: 1, max_factor: 9)
-    @value = n
-
-    if @value == 9009
-      puts "*************"
-      puts @value
-    end
-
-    midpoint = @value/2 > max_factor ? max_factor : @value/2
-
-    @factors = (min_factor..midpoint).each_with_object([]) do |i, array|
-      cmpl = @value / i
-
-      if @value % i == 0 && cmpl >= min_factor && cmpl <= max_factor
-        if @value == 9009
-          p i
-          p cmpl
-          gets
+          if list.none? { |fs| fs == factors }
+            list.push(factors)
+          end
+        else
+          @values_to_factors[value] = [factors]
         end
-
-        array << [i, cmpl]
       end
     end
+  end
+
+  def get(n)
+    Palindrome.new(n, @values_to_factors[n])
+  end
+
+  def largest
+    get(@values_to_factors.keys.max)
+  end
+
+  def smallest
+    get(@values_to_factors.keys.min)
   end
 end
