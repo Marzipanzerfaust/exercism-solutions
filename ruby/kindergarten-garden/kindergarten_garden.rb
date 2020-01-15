@@ -1,9 +1,32 @@
 class Garden
-  attr_reader :alice, :bob, :charlie, :david
-  attr_reader :eve, :fred, :ginny, :harriet
-  attr_reader :ileana, :joseph, :kincaid, :larry
+  PLANTS = {
+    "G" => :grass,
+    "C" => :clover,
+    "R" => :radishes,
+    "V" => :violets
+  }
 
-  def initialize(str)
+  KIDS = %w(Alice Bob Charlie David
+            Eve Fred Ginny Harriet
+            Ileana Joseph Kincaid Larry)
 
+  def initialize(diagram, students = nil)
+    if students
+      students.sort!
+    else
+      students = KIDS
+    end
+
+    @dict = Hash.new { |h, k| h[k] = [] }
+
+    diagram.split("\n").each do |row|
+      row.chars.each_slice(2).with_index do |s, i|
+        s.each { |c| @dict[students[i]] << PLANTS[c] }
+      end
+    end
+  end
+
+  def method_missing(name)
+    @dict[name.to_s.capitalize]
   end
 end
