@@ -1,23 +1,29 @@
-class Fixnum
+class Integer
+  ROMAN_NUMERALS = {
+    "M" => 1000,
+    "CM" => 900,
+    "D" => 500,
+    "CD" => 400,
+    "C" => 100,
+    "XC" => 90,
+    "L" => 50,
+    "XL" => 40,
+    "X" => 10,
+    "IX" => 9,
+    "V" => 5,
+    "IV" => 4,
+    "I" => 1
+  }
+
   def to_roman
-    string = ''
-    int = self
+    output = []
+    n = self
 
-    romans = %w(M CM D CD C XC L XL X IX V IV I)
-    decimals = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
-
-    romans.zip(decimals).each_with_index do |pair, i|
-      roman, decimal = pair
-      quotient, remainder = int.divmod(decimal)
-
-      string += roman * quotient
-      int = remainder
+    ROMAN_NUMERALS.each do |roman, decimal|
+      quotient, n = n.divmod(decimal)
+      output << roman * quotient
     end
 
-    return string
+    return output.join
   end
-end
-
-module BookKeeping
-  VERSION = 2
 end

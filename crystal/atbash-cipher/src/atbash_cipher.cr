@@ -1,16 +1,14 @@
-# Please implement your solution to atbash-cipher in this file
-class Atbash
-  ALPHABET = "abcdefghijklmnopqrstuvwxyz"
-  REVERSE = ALPHABET.reverse
+module Atbash
+  ALPHABET = ('a'..'z').join
 
-  def self.encode(str : String)
-    str
+  def self.encode(input : String) : String
+    input
       .downcase
       .gsub(/\W/, nil)
+      .tr(ALPHABET, ALPHABET.reverse)
       .chars
-      .map { |char| char.ascii_letter? ? REVERSE[ALPHABET.index(char).as(Int)] : char }
       .each_slice(5)
-      .each_with_object([] of String) { |slice, strings| strings << slice.join }
+      .map(&.join)
       .join(' ')
   end
 end

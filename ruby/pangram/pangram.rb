@@ -1,8 +1,7 @@
-require 'set'
+module Pangram
+  ALPHABET = ("a".."z").to_a
 
-class Pangram
-  def self.pangram?(string)
-    alphabet = ('a'..'z').to_a
-    Set.new(string.downcase.split('').reject { |char| !alphabet.include?(char) }).to_a.sort == alphabet
+  def self.pangram?(str)
+    (ALPHABET - str.downcase.chars).empty?
   end
 end

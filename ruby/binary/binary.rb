@@ -1,30 +1,13 @@
-module BookKeeping
-  VERSION = 3
-end
-
-class Binary
+module Binary
   def self.to_decimal(str)
-    str.reverse.chars.each_with_index.reduce(0) do |dec, (digit, i)|
-      if !(digit =~ /[01]/)
-        raise ArgumentError
-      else
-        dec += digit.to_i * 2 ** i
-      end
-    end
-  end
+    dec = 0
 
-  def self.to_binary(str)
-    # Divide by 2 method
-    dec = str.to_i
-    bin = ''
+    str.chars.reverse.each.with_index do |digit, i|
+      raise ArgumentError if digit !~ /[01]/
 
-    loop do
-      quo, rem = dec.divmod(2)
-      bin = rem.to_s + bin
-      dec = quo
-      break if quo == 0
+      dec += digit.to_i * 2 ** i
     end
 
-    return bin
+    return dec
   end
 end

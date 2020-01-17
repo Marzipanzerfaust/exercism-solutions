@@ -1,10 +1,9 @@
-# Please implement your solution to triangle in this file
 struct Triangle
   def initialize(@sides : Array(Int32))
   end
 
   def equilateral?
-    valid? && @sides.to_set.size == 1 && @sides.none? { |s| s == 0 }
+    valid? && @sides.to_set.size == 1 && @sides.none?(&.zero?)
   end
 
   def isosceles?

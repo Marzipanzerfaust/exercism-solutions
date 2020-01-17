@@ -1,17 +1,14 @@
-class Atbash
-  LETTERS = ('a'..'z').to_a
-  NUMBERS = ('0'..'9').to_a
+module Atbash
+  ALPHABET = ('a'..'z').to_a.join
 
-  KEY = Hash[LETTERS.zip(LETTERS.reverse)]
-    .merge Hash[NUMBERS.zip(NUMBERS)]
-
-  def self.encode(str)
-    str
-      .gsub(/\W/, '')
+  def self.encode(input)
+    input
       .downcase
+      .gsub(/\W/, "")
+      .tr(ALPHABET, ALPHABET.reverse)
       .chars
       .each_slice(5)
-      .map { |slice| slice.map { |char| KEY[char] }.join }
+      .map(&:join)
       .join(' ')
   end
 end

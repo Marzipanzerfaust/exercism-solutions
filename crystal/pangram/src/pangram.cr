@@ -1,13 +1,12 @@
-# Please implement your solution to pangram in this file
-struct Pangram
+module Pangram
+  ALPHABET = ('a'..'z').to_a
+
   def self.pangram?(str : String) : Bool
     str
       .downcase
       .gsub(/[^a-z]/, nil)
       .chars
-      .sort
-      .to_set
-      .join
-      .==("abcdefghijklmnopqrstuvwxyz")
+      .uniq
+      .sort == ALPHABET
   end
 end

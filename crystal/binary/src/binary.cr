@@ -1,18 +1,13 @@
-# Please implement your solution to binary in this file
-struct Binary
-  def self.to_decimal(bin : String)
-    bin.reverse.chars.each_with_index.reduce(0) do |sum, (x, i)|
-      begin
-        int = x.to_i
-      rescue ex : ArgumentError
-        raise ex
-      else
-        if int > 1
-          raise ArgumentError.new
-        else
-          sum + x.to_i * 2 ** i
-        end
-      end
+module Binary
+  def self.to_decimal(str : String) : Int
+    dec = 0
+
+    str.reverse.each_char.with_index do |digit, i|
+      raise ArgumentError.new unless digit.to_i?(2)
+
+      dec += digit.to_i * 2 ** i
     end
+
+    return dec
   end
 end

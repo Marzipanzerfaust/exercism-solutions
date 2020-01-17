@@ -10,8 +10,8 @@ class Grains
     #   (1..64).sum { |i| square(i) }
 
     # But, mathematically, we should know that the sum of the first k
-    # powers of 2 (including 2^0) is 2^(k+1) - 1.  If k = 64, it is
-    # 2^(65) - 1, which happens to be the maximum value for an UInt64:
+    # powers of 2 (including 2^0) is 2^k - 1.  If k = 64, it is
+    # 2^(64) - 1, which happens to be the maximum value for an UInt64:
     UInt64::MAX
   end
 end

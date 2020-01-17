@@ -1,16 +1,21 @@
-# Please implement your solution to pascals-triangle in this file
-struct PascalsTriangle
+module PascalsTriangle
   @@triangle = [[1]]
 
-  def self.rows(i)
-    return [] of Int32 if i == 0
+  def self.rows(n : Int)
+    raise ArgumentError.new if n < 0
 
-    s = @@triangle.size
+    return [] of Int32 if n == 0
 
-    (s..i).each do |row|
-      @@triangle << [1] + @@triangle[row-1].each_cons(2).map(&.sum).to_a + [1]
+    @@triangle.size.upto(n) do |i|
+      row = [] of Int32
+
+      row << 1
+      @@triangle[i - 1].each_cons(2) { |(a, b)| row << a + b }
+      row << 1
+
+      @@triangle << row
     end
 
-    return @@triangle.first(i)
+    return @@triangle[...n]
   end
 end

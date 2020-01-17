@@ -1,5 +1,5 @@
-class Gigasecond
+module Gigasecond
   def self.from(utc)
-    return utc += 10 ** 9
+    utc += 10 ** 9
   end
 end

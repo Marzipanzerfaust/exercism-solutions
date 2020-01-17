@@ -1,10 +1,21 @@
+# Inspired by Crystal's Enumerable#tally
+module Enumerable
+  def tally
+    each.with_object(Hash.new(0)) do |item, hash|
+      hash[item] += 1
+    end
+  end
+end
+
 class Phrase
   attr_reader :word_count
 
   def initialize(phrase)
-    @word_count = Hash.new(0)
-    phrase.downcase.gsub(/(\W')|('\W)/, ' ').split(/[^\w']/).each do |word|
-      @word_count[word] += 1 if word.length > 0
-    end
+    @word_count = phrase
+      .downcase
+      .gsub(/[^\w\s']/, " ")
+      .gsub(/\s'|'\s/, " ")
+      .split
+      .tally
   end
 end

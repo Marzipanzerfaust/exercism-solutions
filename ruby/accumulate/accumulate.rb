@@ -1,9 +1,5 @@
-module BookKeeping
-  VERSION = 1
-end
-
 class Array
   def accumulate
-    self.each_with_object([]) { |i, new| new << yield(i) }
+    each.with_object([]) { |i, out| out << yield(i) }
   end
 end

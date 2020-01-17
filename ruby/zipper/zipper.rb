@@ -31,9 +31,7 @@ class Zipper
     return @focus ? self : nil
   end
 
-  def up
-
   def self.from_tree(tree)
-    new(tree)
+    new(tree.clone)
   end
 end

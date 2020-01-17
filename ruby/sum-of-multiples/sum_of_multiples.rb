@@ -1,17 +1,11 @@
-# 1/22/2018: Incorporated feedback from tenebrousedge and nic-potter
-
-module BookKeeping
-  VERSION = 2
-end
-
 class SumOfMultiples
-  def initialize(*nums)
-    @nums = nums
+  def initialize(*ns)
+    @ns = ns
   end
 
   def to(n)
     (1...n)
-      .select { |x| @nums.any? { |y| (x % y).zero? } }
-      .reduce(0, :+)
+      .select { |i| @ns.any? { |j| i % j == 0 } }
+      .sum
   end
 end

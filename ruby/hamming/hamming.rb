@@ -1,19 +1,7 @@
-class Hamming
+module Hamming
   def self.compute(a, b)
-    if a.length != b.length
-      raise ArgumentError
-    end
+    raise ArgumentError if a.length != b.length
 
-    distance = 0
-    for i in 0 .. a.length - 1
-      if a[i] != b[i]
-        distance += 1
-      end
-    end
-    return distance
+    a.size.times.count { |i| a[i] != b[i] }
   end
-end
-
-class BookKeeping
-  VERSION
 end

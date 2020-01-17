@@ -1,12 +1,14 @@
-# Please implement your solution to anagram in this file
-struct Anagram
-  def self.is_anagram?(a : String, b : String)
-    a = a.downcase
-    b = b.downcase
+class String
+  def anagram_of?(other : self) : Bool
+    a = self.downcase
+    b = other.downcase
+
     return a.chars.sort == b.chars.sort && a != b
   end
+end
 
-  def self.find(str : String, arr : Array(String))
-    arr.select { |string| self.is_anagram?(str, string) }
+module Anagram
+  def self.find(str : String, arr : Array(String)) : Array(String)
+    arr.select(&.anagram_of?(str))
   end
 end

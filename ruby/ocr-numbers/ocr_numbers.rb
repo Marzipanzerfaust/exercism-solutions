@@ -1,4 +1,4 @@
-class OcrNumbers
+module OcrNumbers
   ZERO =  [" _ ",
            "| |",
            "|_|",
@@ -44,7 +44,7 @@ class OcrNumbers
   DIGIT_HEIGHT = 4
 
   def self.convert(input)
-    array = input.split("\n")
+    array = input.split("\n").map(&:chars)
 
     row_size = array.first.size
     col_size = array.size
@@ -53,18 +53,10 @@ class OcrNumbers
       raise ArgumentError
     end
 
-    no_rows = row_size / DIGIT_WIDTH
-    no_cols = col_size / DIGIT_HEIGHT
-
     digits =
   end
 
-private
-  # Returns a "slice" out of a two-dimensional array.
-  # Example:
-  # x = [ %w(foo bar baz), %w(a b c) ]
-  # slice_2d(x
-  def slice_2d(array_2d)
+  def self.slice(array_2d, start, n)
 
   end
 end

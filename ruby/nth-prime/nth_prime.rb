@@ -1,28 +1,20 @@
-class Prime
+# Brute force method with caching
+
+module Prime
+  @@primes = [2]
+
   def self.nth(n)
-    # Simple brute force method; takes a long time for big primes
+    raise ArgumentError if n <= 0
 
-    if n == 0
-      raise ArgumentError
-    end
+    return @@primes[n - 1] if n <= @@primes.size
 
-    i = 0
-    x = 2
-    while i < n
-      puts i
-      if divisors(x) == [1, x]
-        result = x
-        i += 1
+    (@@primes.last+1..).each do |p|
+      if @@primes.none? { |x| p % x == 0 }
+        @@primes << p
+        break if @@primes.size == n
       end
-      x += 1
     end
 
-    return result
-  end
-
-  private
-
-  def self.divisors(n)
-    (1..n).select { |x| n % x == 0 }
+    return @@primes.last
   end
 end

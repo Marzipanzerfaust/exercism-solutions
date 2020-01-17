@@ -1,5 +1,5 @@
 class Affine
-  ALPHABET = "abcdefghijklmnopqrstuvwxyz"
+  ALPHABET = ("a".."z").to_a
 
   def initialize(a, b)
     # `a` and `m` (the size of the alphabet) must be coprime

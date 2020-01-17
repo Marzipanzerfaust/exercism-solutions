@@ -1,31 +1,29 @@
-# Please implement your solution to roman-numerals in this file
 struct Int
   ROMAN_NUMERALS = {
-    1 => "I",
-    4 => "IV",
-    5 => "V",
-    9 => "IX",
-    10 => "X",
-    40 => "XL",
-    50 => "L",
-    90 => "XC",
-    100 => "C",
-    400 => "CD",
-    500 => "D",
-    900 => "CM",
-    1000 => "M"
+    "M" => 1000,
+    "CM" => 900,
+    "D" => 500,
+    "CD" => 400,
+    "C" => 100,
+    "XC" => 90,
+    "L" => 50,
+    "XL" => 40,
+    "X" => 10,
+    "IX" => 9,
+    "V" => 5,
+    "IV" => 4,
+    "I" => 1
   }
 
-  def to_roman
-    output = ""
-    decimal = self
+  def to_roman : String
+    output = [] of String
+    n = self
 
-    ROMAN_NUMERALS.keys.reverse.each do |x|
-      quotient, remainder = decimal.divmod(x)
-      decimal = remainder
-      output += ROMAN_NUMERALS[x] * quotient
+    ROMAN_NUMERALS.each do |roman, decimal|
+      quotient, n = n.divmod(decimal)
+      output << roman * quotient
     end
 
-    return output
+    return output.join
   end
 end

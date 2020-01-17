@@ -1,93 +1,69 @@
-# Please implement your solution to forth in this file
-struct Forth
-  def self.evaluate(str : String) : Array(Int32)
-    stack = ForthStack.new
-    stack.eval(str)
-    return stack.values
-  end
-end
+module Forth
+  DEFINITION = /: (?<name>\S+) (?<primitive>[^;]+) ;/
 
-class ForthStack
-  getter values
+  def self.evaluate(expr : String) : Array(Int32)
+    # Expressions are case-insensitive
+    expr = expr.downcase
 
-  WORD = /[\w\+\-\*\/]+/
-  DEFINITION = /: (#{WORD}) ((?:#{WORD}\s?)+) ;/
+    # Dictionary of user definitions
+    definitions = {} of String => String
 
-  def initialize
-    @values = [] of Int32
-    @operations = {} of String => (-> Nil)
+    # Parse the expression for user definitions
+    expr.scan(DEFINITION) do |m|
+      # Can't redefine numbers
+      raise Exception.new if m["name"].to_i?
 
-    @operations.merge! Hash{
-      "+" => ->{
-        x, y = @values.pop(2)
-        @values.push(x + y)
-        return
-      },
+      definitions[m["name"]] = m["primitive"]
+    end
 
-      "*" => ->{
-        x, y = @values.pop(2)
-        @values.push(x * y)
-        return
-      },
+    # Once all definitions have been parsed, remove them from the
+    # expression...
+    expr = expr.gsub(DEFINITION, nil)
 
-      "-" => ->{
-        x, y = @values.pop(2)
-        @values.push(x - y)
-        return
-      },
+    # Then, replace all user-defined words with their corresponding
+    # primitives
+    definitions.each { |name, prim| expr = expr.gsub(name, prim) }
 
-      "/" => ->{
-        x, y = @values.pop(2)
-        @values.push(x / y)
-        return
-      },
+    # Now, we can evaluate the expression:
+    stack = [] of Int32
 
-      "dup" => ->{
-        @values.push(@values.last)
-        return
-      },
-
-      "drop" => ->{
-        @values.pop
-        return
-      },
-
-      "swap" => ->{
-        x, y = @values.pop(2)
-        @values.push(y, x)
-        return
-      },
-
-      "over" => ->{
-        @values.push(@values[-2])
-        return
-      }
-    }
-  end
-
-  def eval(str : String)
-    str.scan(/#{DEFINITION}|\d+|#{WORD}/) do |m|
-      case m[0]
-      when DEFINITION
-        raise "Cannot redefine numbers" if m[1].to_i?
-        self.define(m[1], m[2])
+    expr.split.each do |x|
+      case x
       when .to_i?
-        self.push(m[0].to_i)
-      when WORD
-        self.call(m[0])
+        stack << x.to_i
+      when "dup"
+        raise Exception.new if stack.empty?
+
+        stack << stack.last
+      when "drop"
+        raise Exception.new if stack.empty?
+
+        stack.pop
+      when /[+\-*\/]/, "swap", "over"
+        raise Exception.new if stack.size < 2
+
+        a, b = stack.pop(2)
+
+        case x
+        when "+"
+          stack << a + b
+        when "-"
+          stack << a - b
+        when "*"
+          stack << a * b
+        when "/"
+          stack << a // b
+        when "swap"
+          stack << b << a
+        when "over"
+          stack << a << b << a
+        end
+      else
+        # Unrecognized word
+        raise Exception.new
       end
     end
-  end
 
-  def push(n : Int32)
-    @values << n
-  end
-
-  def call(name : String)
-    @operations[name.downcase].call
-  end
-
-  def define(name : String, oper : String)
-    @operations[name.downcase] = ->{ self.eval(oper) }
+    return stack
   end
 end

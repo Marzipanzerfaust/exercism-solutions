@@ -1,21 +1,13 @@
-# Please implement your solution to sieve in this file
-struct Primes
-  # Following the method laid out in
-  # <https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes#Overview>;
-  # optimizations not included
-  def self.sieve(n : Int32) : Array(Int32)
-    nums = 2..n
-    primes = [] of Int32 | Nil
-    primes += nums.to_a
+module Primes
+  def self.sieve(n : Int) : Array(Int32)
+    return [] of Int32 if n == 1
 
-    nums.each.with_index do |p, i|
-      next if !primes[i]
-      (p..n).step(p).each.with_index do |x, j|
-        next if j == 0
-        primes[i + j * p] = nil
-      end
+    primes = (2..n).to_a
+
+    primes.each do |x|
+      primes.reject! { |y| y.divisible_by?(x) && y != x }
     end
 
-    return primes.compact
+    return primes
   end
 end

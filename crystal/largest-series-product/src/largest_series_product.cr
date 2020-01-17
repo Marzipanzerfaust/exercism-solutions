@@ -1,18 +1,17 @@
-# Please implement your solution to largest-series-product in this file
 struct Series
   def initialize(@digits : String)
   end
 
-  def largest_product(n : Int32) : Int32 | UInt64
+  def largest_product(n : Int) : Int
     raise ArgumentError.new if n > @digits.size
 
     return 1 if n.zero?
 
     return @digits
       .chars
-      .map(&.to_i)
+      .map(&.to_u64)
       .each_cons(n, reuse: true)
-      .map(&.product(1_u64))
+      .map(&.product)
       .max
   end
 end

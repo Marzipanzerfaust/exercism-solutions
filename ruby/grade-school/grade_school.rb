@@ -1,7 +1,3 @@
-module BookKeeping
-  VERSION = 3
-end
-
 class School
   def initialize
     @roster = Hash.new { |h, k| h[k] = [] }
@@ -16,6 +12,6 @@ class School
   end
 
   def students_by_grade
-    @roster.sort.map { |k, v| {grade: k, students: self.students(k)} }
+    @roster.keys.sort.map { |k| {grade: k, students: students(k)} }
   end
 end

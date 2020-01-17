@@ -14,7 +14,12 @@ class Scale
 
     base = case type
            when :chromatic
-             Chromatics::SHARPS
+             case upper
+             when 'F'
+               Chromatics::FLATS
+             else
+               Chromatics::SHARPS
+             end
            when :major
              case upper
              when 'C'
