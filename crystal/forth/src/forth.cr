@@ -1,7 +1,7 @@
 module Forth
-  DEFINITION = /: (?<name>\S+) (?<primitive>[^;]+) ;/
+  DEFINITION = /: (?<name>\S+) (?<defn>[^;]+) ;/
 
-  def self.evaluate(expr : String) : Array(Int32)
+  def self.evaluate(expr : String) : Array(Int16)
     # Expressions are case-insensitive
     expr = expr.downcase
 
@@ -13,7 +13,7 @@ module Forth
       # Can't redefine numbers
       raise Exception.new if m["name"].to_i?
 
-      definitions[m["name"]] = m["primitive"]
+      definitions[m["name"]] = m["defn"]
     end
 
     # Once all definitions have been parsed, remove them from the
@@ -21,16 +21,16 @@ module Forth
     expr = expr.gsub(DEFINITION, nil)
 
     # Then, replace all user-defined words with their corresponding
-    # primitives
-    definitions.each { |name, prim| expr = expr.gsub(name, prim) }
+    # definitions
+    definitions.each { |name, defn| expr = expr.gsub(name, defn) }
 
     # Now, we can evaluate the expression:
-    stack = [] of Int32
+    stack = [] of Int16
 
     expr.split.each do |x|
       case x
-      when .to_i?
-        stack << x.to_i
+      when .to_i16?
+        stack << x.to_i16
       when "dup"
         raise Exception.new if stack.empty?
 

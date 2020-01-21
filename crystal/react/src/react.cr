@@ -11,14 +11,17 @@ module React
   end
 
   class ComputeCell
-    def initialize(@a : Cell, &block)
-      @b = nil
-      @formula = block
-    end
+    @a : Cell
+    @b : Cell?
 
-    def initialize(@a : Cell, @b : Cell, &block)
-      @formula = block
-    end
+    # def initialize(@a : Cell, &block)
+    #   @b = nil
+    #   @formula = block
+    # end
+    #
+    # def initialize(@a : Cell, @b : Cell, &block)
+    #   @formula = block
+    # end
 
     def value : Int32
       if @b
