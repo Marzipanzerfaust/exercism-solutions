@@ -79,6 +79,8 @@ class LinkedList
 
         node = @findNode(n)
 
+        return unless node
+
         node.prev?.next = node.next
         node.next?.prev = node.prev
 

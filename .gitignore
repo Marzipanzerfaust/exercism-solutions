@@ -13,6 +13,11 @@
 # Ignore all `download` scripts
 **/download
 
+# Ignore all `node_modules`, *.lock, *.json
+**/node_modules
+**/*.lock
+**/*.json
+
 # bash
 /bash/**/*_test.sh
 
@@ -61,6 +66,7 @@
 
 # javascript
 /javascript/**/*.spec.js
+/javascript/**/*.config.js
 
 # lua
 /lua/**/*_spec.lua
