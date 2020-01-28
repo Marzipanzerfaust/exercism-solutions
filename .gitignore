@@ -45,10 +45,6 @@
 /csharp/**/*.csproj
 /csharp/**/*Test.cs
 
-# ecmascript
-/ecmascript/**/package.json
-/ecmascript/**/*.spec.js
-
 # elixir
 /elixir/**/_build
 /elixir/**/test
