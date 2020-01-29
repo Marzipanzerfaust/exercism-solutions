@@ -1,10 +1,12 @@
 class Robot
   attr_reader :name
 
-  @@names = ('AA000'..'ZZ999').to_a.shuffle.to_enum
+  @@names = ('AA000'..'ZZ999').to_a
+  @@enum = @@names.to_enum
 
   def self.forget
-    @@names = ('AA000'..'ZZ999').to_a.shuffle.to_enum
+    @@names.shuffle!
+    @@enum.rewind
   end
 
   def initialize
@@ -12,6 +14,6 @@ class Robot
   end
 
   def reset
-    @name = @@names.next
+    @name = @@enum.next
   end
 end

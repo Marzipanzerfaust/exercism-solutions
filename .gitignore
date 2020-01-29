@@ -38,6 +38,8 @@
 
 # crystal
 /crystal/**/spec
+/crystal/**/shard.yml
+/crystal/**/shard.lock
 
 # csharp
 /csharp/**/bin
@@ -78,6 +80,8 @@
 
 # ruby
 /ruby/**/*_test.rb
+/ruby/**/Gemfile
+/ruby/**/Gemfile.lock
 
 # rust
 /rust/**/tests
