@@ -4,6 +4,11 @@ class Anagram
   end
 
   def match(list)
-    list.select { |word| word.downcase.chars.sort == @word.downcase.chars.sort && word.downcase != @word.downcase }
+    list.select do |word|
+      a = @word.downcase
+      b = word.downcase
+
+      a != b && a.chars.sort == b.chars.sort
+    end
   end
 end

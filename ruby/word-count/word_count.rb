@@ -13,7 +13,7 @@ class Phrase
   def initialize(phrase)
     @word_count = phrase
       .downcase
-      .gsub(/[^\w\s']/, " ")
+      .gsub(/[^\w']/, " ")
       .gsub(/\s'|'\s/, " ")
       .split
       .tally

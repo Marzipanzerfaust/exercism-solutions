@@ -1,19 +1,23 @@
 module Bob
   def self.hey(statement)
-    if nothing?(statement)
+    is_blank = blank?(statement)
+    is_question = question?(statement)
+    is_yell = yell?(statement)
+
+    if is_blank
       "Fine. Be that way!"
-    elsif question?(statement) && yell?(statement)
+    elsif is_question && is_yell
       "Calm down, I know what I'm doing!"
-    elsif question?(statement)
+    elsif is_question
       "Sure."
-    elsif yell?(statement)
+    elsif is_yell
       "Whoa, chill out!"
     else
       "Whatever."
     end
   end
 
-  def self.nothing?(text)
+  def self.blank?(text)
     text !~ /[[:graph:]]/
   end
 
@@ -22,6 +26,6 @@ module Bob
   end
 
   def self.yell?(text)
-    text =~ /[A-Z]/ && text !~ /[a-z]/
+    text =~ /[[:upper:]]/ && text !~ /[[:lower:]]/
   end
 end

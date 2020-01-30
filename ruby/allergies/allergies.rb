@@ -14,11 +14,11 @@ class Allergies
     @score = n
   end
 
-  def allergic_to?(food)
-    @score & ALLERGENS[food] != 0
+  def allergic_to?(allergen)
+    @score & ALLERGENS[allergen] != 0
   end
 
   def list
-    ALLERGENS.keys.select { |food| allergic_to?(food) }
+    ALLERGENS.keys.select { |allergen| allergic_to?(allergen) }
   end
 end
