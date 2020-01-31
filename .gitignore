@@ -87,5 +87,9 @@
 /rust/**/tests
 /rust/**/Cargo.toml
 
+# typescript
+/typescript/**/jest.config.js
+/typescript/**/*.test.ts
+
 # vimscript
 /vimscript/**/*.vader
