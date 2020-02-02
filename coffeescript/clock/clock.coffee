@@ -3,9 +3,13 @@ class Clock
         new Clock(hours, minutes)
 
     constructor: (@hours = 0, @minutes = 0) ->
+        @wrap()
 
     toString: ->
-        "#{@hours.toString().padStart(2, "0")}:#{@minutes.toString().padStart(2, "0")}"
+        hh = @hours.toString().padStart(2, '0')
+        mm = @minutes.toString().padStart(2, '0')
+
+        return "#{hh}:#{mm}"
 
     plus: (n) ->
         @minutes += n

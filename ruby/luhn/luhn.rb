@@ -1,18 +1,23 @@
-class Luhn
+module Luhn
   def self.valid?(str)
-    str.gsub!(/\s/, '')
+    str = str.gsub(/\s/, '')
 
     return false if str =~ /\D/
-    return false if str.size <= 1
+    return false if str.size < 2
 
-    seq = str.chars.map(&:to_i).reverse
+    digits = str.chars.map(&:to_i).reverse
 
-    sum = seq.each_with_index.reduce(0) do |sum, (n, i)|
+    sum = digits.each.with_index.sum do |n, i|
       if i.even?
-        sum += n
+        n
       else
         n *= 2
-        sum += n > 9 ? n - 9 : n
+
+        if n > 9
+          n - 9
+        else
+          n
+        end
       end
     end
 

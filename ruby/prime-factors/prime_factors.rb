@@ -1,11 +1,12 @@
-class PrimeFactors
-  def self.for(n)
-    least_factor = (2..n).find { |i| (n % i).zero? }
+module PrimeFactors
+  def self.of(n, factors = [])
+    least_factor = (2..n).find { |i| n % i == 0 }
 
-    if least_factor.nil?
-      return []
+    if least_factor
+      factors << least_factor
+      return of(n / least_factor, factors)
     else
-      return [least_factor] + self.for(n / least_factor)
+      return factors
     end
   end
 end

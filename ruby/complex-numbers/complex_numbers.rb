@@ -48,6 +48,7 @@ class ComplexNumber
 
   def exp
     if @imaginary == Math::PI
+      # Euler's Identity
       a = -(Math::E ** @real).round
       b = 0
     else

@@ -12,7 +12,8 @@ class Triplet
   end
 
   def pythagorean?
-    @a < @b && @b < @c &&
+    @a < @b &&
+      @b < @c &&
       @a ** 2 + @b ** 2 == @c ** 2
   end
 
@@ -20,7 +21,7 @@ class Triplet
     triplets = (min_factor..max_factor)
       .to_a
       .combination(3)
-      .map { |a, b, c| Triplet.new(a, b, c) }
+      .map { |sides| Triplet.new(*sides) }
       .select(&:pythagorean?)
 
     triplets.select! { |t| t.sum == sum } if sum

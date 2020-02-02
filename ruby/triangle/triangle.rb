@@ -4,22 +4,24 @@ class Triangle
   end
 
   def equilateral?
-    valid? && @sides.uniq.size == 1
+    valid? && unique_sides == 1
   end
 
   def isosceles?
-    valid? && @sides.uniq.size <= 2
+    valid? && unique_sides <= 2
   end
 
   def scalene?
-    valid? && @sides.uniq.size == 3
+    valid? && unique_sides == 3
   end
-
-  private
 
   def valid?
     a, b, c = @sides
 
     return @sides.all? { |s| s > 0 } && a + b >= c
+  end
+
+  def unique_sides
+    @sides.uniq.size
   end
 end
