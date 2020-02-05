@@ -1,4 +1,4 @@
-class Acronym
+module Acronym
   def self.abbreviate(string)
     string
       .gsub(/\W/, ' ')

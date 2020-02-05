@@ -1,6 +1,6 @@
-class Isogram
+module Isogram
   def self.isogram?(str)
-    str = str.gsub(/\W/, "").downcase
+    str = str.gsub(/\W/, nil).downcase
     return str.chars == str.chars.uniq
   end
 end

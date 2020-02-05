@@ -4,7 +4,7 @@ module Proverb
 
     return output if list.empty?
 
-    list.each_cons(2) do |(a, b)|
+    list.each_cons(2, reuse: true) do |(a, b)|
       output << "For want of a #{a} the #{b} was lost."
     end
 

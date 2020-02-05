@@ -24,10 +24,7 @@ export class Triplet {
         let maxFactor = criteria.maxFactor || 100;
         let sum = criteria.sum;
 
-        let factors = Array.from(
-            {length: (maxFactor - minFactor) + 1},
-            (_, i) => minFactor + i
-        );
+        let factors = Array.range(minFactor, maxFactor);
 
         let triplets = factors
             .combinations(3)
@@ -41,10 +38,19 @@ export class Triplet {
     }
 }
 
-// Algorithm adapted from:
+// Source:
+// <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from>
+Array.range = function(start, stop, step = 1) {
+    return Array.from(
+        {length: (stop - start) / step + 1},
+        (_, i) => start + i * step
+    );
+}
+
+// Adapted from:
 // <https://dev.to/rrampage/algorithms-generating-combinations-100daysofcode-4o0a>
 Array.prototype.eachCombination = function*(k) {
-    let idxs = [];
+    let idxs = new Array(k);
 
     for (let i = 0; i < k; ++i)
         idxs[i] = i;
@@ -70,8 +76,5 @@ Array.prototype.eachCombination = function*(k) {
 }
 
 Array.prototype.combinations = function(k) {
-    let combos = [];
-    for (const c of this.eachCombination(k))
-        combos.push(c);
-    return combos;
+    return [...this.eachCombination(k)];
 }

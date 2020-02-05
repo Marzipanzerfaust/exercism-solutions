@@ -7,10 +7,14 @@ module PascalsTriangle
     return [] of Int32 if n == 0
 
     @@triangle.size.upto(n) do |i|
-      row = [] of Int32
+      row = Array(Int32).new(i + 1)
 
       row << 1
-      @@triangle[i - 1].each_cons(2) { |(a, b)| row << a + b }
+
+      @@triangle[i - 1].each_cons(2, reuse: true) do |(a, b)|
+        row << a + b
+      end
+
       row << 1
 
       @@triangle << row

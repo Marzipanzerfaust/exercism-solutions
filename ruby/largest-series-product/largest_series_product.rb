@@ -11,8 +11,9 @@ class Series
 
     return @digits
       .each_char
+      .map(&:to_i)
       .each_cons(n)
-      .map { |group| group.map(&:to_i).reduce(:*) }
+      .map { |group| group.reduce(:*) }
       .max
   end
 end

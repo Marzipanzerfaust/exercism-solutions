@@ -1,10 +1,10 @@
-class Brackets
+module Brackets
   PAIRS = {'(' => ')', '[' => ']', '{' => '}'}
 
   def self.paired?(str)
     stack = []
 
-    str.chars.each do |char|
+    str.each_char do |char|
       case char
       when '(', '[', '{'
         stack.push(char)

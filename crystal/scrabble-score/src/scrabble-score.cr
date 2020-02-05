@@ -1,6 +1,6 @@
-class ScrabbleScore
-  def self.score(str : String) : Int32
-    str.gsub(/\W/, "").upcase.chars.sum do |letter|
+module ScrabbleScore
+  def self.score(str : String) : Int
+    str.gsub(/\W/, nil).upcase.each_char.sum do |letter|
       case letter.to_s
       when /[AEIOULNRST]/ then 1
       when /[DG]/ then 2

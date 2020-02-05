@@ -1,11 +1,18 @@
 class Anagram
-    constructor: (string) ->
-        @string = string.toLowerCase()
+    constructor: (@string) ->
 
     match: (array) ->
-        (string for string in (str.toLowerCase() for str in array) when this.isAnagram(string))
+        (s.toLowerCase() for s in array when s.isAnagramOf(@string))
 
-    isAnagram: (string) ->
-        Array.from(string).sort().join('') == Array.from(@string).sort().join('') unless string == @string
+
+String::isAnagramOf = (other) ->
+    thisLower = this.toLowerCase()
+    otherLower = other.toLowerCase()
+
+    if thisLower == otherLower
+        false
+    else
+        [thisLower...].sort().join("") == [otherLower...].sort().join("")
+
 
 module.exports = Anagram

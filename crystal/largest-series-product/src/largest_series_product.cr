@@ -8,9 +8,9 @@ struct Series
     return 1 if n.zero?
 
     return @digits
-      .chars
+      .each_char
       .map(&.to_u64)
-      .each_cons(n, reuse: true)
+      .cons(n, reuse: true)
       .map(&.product)
       .max
   end

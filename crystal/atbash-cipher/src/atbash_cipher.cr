@@ -6,8 +6,8 @@ module Atbash
       .downcase
       .gsub(/\W/, nil)
       .tr(ALPHABET, ALPHABET.reverse)
-      .chars
-      .each_slice(5)
+      .each_char
+      .slice(5)
       .map(&.join)
       .join(' ')
   end

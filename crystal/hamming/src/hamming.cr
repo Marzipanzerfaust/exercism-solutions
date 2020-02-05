@@ -1,12 +1,7 @@
-# Please implement your solution to hamming in this file
-class Hamming
-  def self.compute(strand1 : String, strand2 : String)
-    if strand1 == strand2
-      0
-    elsif strand1.size != strand2.size
-      raise ArgumentError.new
-    else
-      strand1.chars.each_with_index.count { |x, i| x != strand2[i] }
-    end
+module Hamming
+  def self.compute(a : String, b : String)
+    raise ArgumentError if a.length != b.length
+
+    a.size.times.count { |i| a[i] != b[i] }
   end
 end

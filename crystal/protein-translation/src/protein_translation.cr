@@ -21,7 +21,7 @@ module ProteinTranslation
   def self.proteins(seq : String) : Array(String)
     output = [] of String
 
-    seq.chars.each_slice(3).map(&.join).each do |nuc|
+    seq.each_char.slice(3, reuse: true).map(&.join).each do |nuc|
       break if STOPS.includes?(nuc)
       output << DICTIONARY[nuc]
     end

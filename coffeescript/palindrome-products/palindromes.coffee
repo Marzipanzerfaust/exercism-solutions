@@ -1,36 +1,27 @@
-# Combinations with replacement. Given an input array and an integer
-# `k`, return a new array of each `k`-tuple that represents a possible
-# combination in the input array.
-#
-# No guarantees that this is actually efficient; it's just the simplest
-# recursive algorithm I could come up with.
-Array::repeatedCombinations = (k) ->
-    switch k
+Array::eachRepeatedCombination = (k) ->
+    throw "Size must be positive" if k < 0
+
+    switch (k)
         when 0
-            []
+            yield []
         when 1
-            @map((x) => [x])
+            yield [x] for x in this
         else
-            ([x, xs...] for x in this for xs in @repeatedCombinations(k - 1)).flat()
-
-
-Array::isEqual = (other) ->
-    if @length != other.length
-        false
-    else
-        [0...@length].every((i) => this[i] == other[i])
+            for i in [0...@length]
+                for c from @slice(i).eachRepeatedCombination(k - 1)
+                    yield [this[i], c...]
 
 
 class Palindromes
     @isPalindrome: (n) ->
-        chars = Array.from(n.toString())
+        chars = [n.toString()...]
         reverse = chars.slice().reverse()
 
         return chars.join("") == reverse.join("")
 
     constructor: (kwargs) ->
-        @minFactor = kwargs?.minFactor ? 1
-        @maxFactor = kwargs?.maxFactor ? 9
+        @minFactor = kwargs.minFactor ? 1
+        @maxFactor = kwargs.maxFactor ? 9
 
         # This will be used to map each value to an array containing
         # each possible pair of factors in the range
@@ -38,22 +29,20 @@ class Palindromes
         @valuesToFactors = new Map
 
     generate: ->
-        for [i, j] in [@minFactor..@maxFactor].repeatedCombinations(2)
+        for [i, j] from [@minFactor..@maxFactor].eachRepeatedCombination(2)
             value = i * j
-            factors = [i, j].sort()
 
             if Palindromes.isPalindrome(value)
-                if @valuesToFactors.has(value)
-                    list = @valuesToFactors.get(value)
+                factors = [i, j].sort()
 
-                    if not list.some((k) => k.isEqual(factors))
-                        list.push(factors)
+                if @valuesToFactors.has(value)
+                    @valuesToFactors.get(value).add(factors)
                 else
-                    @valuesToFactors.set(value, [factors])
+                    @valuesToFactors.set(value, new Set([factors]))
 
     get: (n) ->
         factors = @valuesToFactors.get(n)
-        return {value: n, factors}
+        return {value: n, factors: [factors...]}
 
     getWithFunc: (func) ->
         value = func.call(null, @valuesToFactors.keys()...)
