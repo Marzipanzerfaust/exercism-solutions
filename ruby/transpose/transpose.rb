@@ -20,7 +20,7 @@ module Transpose
     # whitespace
     curr_width = 0
 
-    out.size.times.reverse_each do |i|
+    out.each_index.reverse_each do |i|
       tmp = out[i].rstrip
 
       curr_width = tmp.size if tmp.size > curr_width

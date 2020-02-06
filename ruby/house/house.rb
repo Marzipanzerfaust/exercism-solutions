@@ -32,7 +32,7 @@ module House
   def self.recite
     verses = []
 
-    OBJECTS.size.times do |i|
+    OBJECTS.each_index do |i|
       lines = ["This is the #{OBJECTS[i]}"]
 
       (i - 1).downto(0) do |j|

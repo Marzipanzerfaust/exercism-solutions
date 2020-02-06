@@ -4,7 +4,7 @@ class Matrix
   def initialize(str)
     @rows = str.each_line.map { |line| line.split.map(&:to_i) }
 
-    @columns = @rows.first.size.times.with_object([]) do |i, arr|
+    @columns = @rows.first.each_index.with_object([]) do |i, arr|
       arr << rows.map { |row| row[i] }
     end
 
