@@ -2,146 +2,177 @@ class Node
   include Enumerable(Int32)
   include Iterable(Int32)
 
-  property value : Int32
-  property left : Node?
-  property right : Node?
-  property parent : Node?
+  getter value : Int32
+  getter left : Node?
+  getter right : Node?
+  getter parent : Node?
 
-  def initialize(@value)
+  protected setter value
+  protected setter left
+  protected setter right
+  protected setter parent
+
+  def initialize(@value, @parent = nil)
   end
 
-  def initialize(@value, @parent)
-  end
-
-  def insert(n : Int32)
+  def insert(n)
     if n <= @value
-      if l = @left
-        l.insert(n)
+      if @left
+        @left.not_nil!.insert(n)
       else
-        @left = Node.new(n, self)
+        @left = Node.new(n, parent: self)
       end
     else
-      if r = @right
-        r.insert(n)
+      if @right
+        @right.not_nil!.insert(n)
       else
-        @right = Node.new(n, self)
+        @right = Node.new(n, parent: self)
       end
     end
   end
 
-  def search(n : Int32) : Node?
-    if n == @value
-      self
-    else
-      if n <= @value
-        @left.try(&.search(n))
-      else
-        @right.try(&.search(n))
-      end
-    end
-  end
-
-  def delete(n : Int32)
-    node = search(n)
-
-    return unless node
-
-    case node.children.size
+  def search(n)
+    case @value <=> n
     when 0
-      node.remove
-    when 1
-      child = (node.left || node.right).not_nil!
-      node.replace(child)
-    when 2
-      successor = node.right.not_nil!.smallest_child
-
-      node.value = successor.value
-
-      case successor.children.size
-      when 0
-        successor.remove
-      when 1
-        successor.replace(successor.right.not_nil!)
-      end
+      self
+    when +1
+      @left.try &.search(n)
+    when -1
+      @right.try &.search(n)
     end
   end
 
-  def children : Array(Node)
-    [@left, @right].compact
-  end
-
-  def remove
-    if left_child?
-      @parent.not_nil!.left = nil
-    elsif right_child?
-      @parent.not_nil!.right = nil
-    end
-
-    children.each(&.parent = @parent)
-  end
-
-  def left_child? : Bool
-    @value == @parent.try(&.left.try(&.value))
-  end
-
-  def right_child? : Bool
-    @value == @parent.try(&.right.try(&.value))
-  end
-
-  def replace(other : Node)
-    @value = other.value
-    @left = other.left
-    @right = other.right
-    @parent = other.parent
-
-    other.left.try(&.parent = self)
-    other.right.try(&.parent = self)
-
-    other.remove
-  end
-
-  def smallest_child : Node
-    node = self
-
-    while left = node.left
-      node = left
-    end
-
-    return node
-  end
-
-  # Overriding Enumerable#to_a since it depends on #each, which we need
-  # this to define
-  def to_a(accumulator = [] of Int32) : Array(Int32)
-    @left.try(&.to_a(accumulator))
-    accumulator << @value
-    @right.try(&.to_a(accumulator))
-    return accumulator
+  def each(&block : Int32 -> Nil)
+    @left.try &.each(&block)
+    yield @value
+    @right.try &.each(&block)
   end
 
   def each
-    BSTIterator.new(self)
+    ValueIterator.new(self)
   end
 
-  def each(&block)
-    each.each { |value| yield value }
+  def map(&block : Int32 -> T) forall T
+    xs = [] of T
+    each { |x| xs << block.call(x) }
+    return xs
   end
 
-  private class BSTIterator
+  def delete(n)
+    target = search(n)
+
+    return if target.nil?
+
+    if target.left && target.right
+      target.replace_with!(target.successor)
+    elsif target.left
+      target.replace_with!(target.left)
+    elsif target.right
+      target.replace_with!(target.right)
+    else
+      target.replace_with!(nil)
+    end
+  end
+
+  def least_child
+    curr = self.as(Node)
+
+    while curr.left
+      curr = curr.left.as(Node)
+    end
+
+    return curr
+  end
+
+  def greatest_child
+    curr = self.as(Node)
+
+    while curr.right
+      curr = curr.right.as(Node)
+    end
+
+    return curr
+  end
+
+  def successor
+    if @right
+      @right.not_nil!.least_child
+    else
+      # If this node has no right child, we need to walk up the tree
+      # until we find a node whose value is greater than or equal to
+      # this one's
+      return unless @parent
+
+      curr = @parent.as(Node)
+
+      until curr.value >= @value
+        return unless curr.parent
+        curr = curr.parent.as(Node)
+      end
+
+      return curr
+    end
+  end
+
+  def predecessor
+    if @left
+      @left.not_nil!.greatest_child
+    else
+      # If this node has no left child, we need to walk up the tree
+      # until we find a node whose value is less than this one's
+      return unless @parent
+
+      curr = @parent.as(Node)
+
+      until curr.value < @value
+        return unless curr.parent
+        curr = curr.parent.as(Node)
+      end
+
+      return curr
+    end
+  end
+
+  protected def replace_with!(other)
+    if other
+      # If `other` is a node...
+
+      # Copy its value
+      @value = other.value
+
+      # Make its children point to its parent
+      other.left.try &.parent = other.parent
+      other.right.try &.parent = other.parent
+
+      other.replace_with!(other.left)
+
+      # Now the other node should effectively be orphaned from the tree
+    else
+      # If `other` is nil, we simply remove the parent's reference to
+      # this node
+      @parent.try do |p|
+        p.left = nil if p.left == self
+        p.right = nil if p.right == self
+      end
+    end
+  end
+
+  private class ValueIterator
     include Iterator(Int32)
 
-    @buffer : Array(Int32)
+    @root : Node
+    @current : Node?
 
-    def initialize(node : Node)
-      @buffer = node.to_a
+    def initialize(@root)
+      @current = @root.least_child
     end
 
     def next
-      if @buffer.empty?
-        stop
-      else
-        @buffer.shift
-      end
+      stop if @current.nil?
+
+      value = @current.not_nil!.value
+      @current = @current.not_nil!.successor
+      return value
     end
   end
 end
