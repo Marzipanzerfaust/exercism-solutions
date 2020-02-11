@@ -160,11 +160,10 @@ class Node
   private class ValueIterator
     include Iterator(Int32)
 
-    @root : Node
     @current : Node?
 
-    def initialize(@root)
-      @current = @root.least_child
+    def initialize(root)
+      @current = root.least_child
     end
 
     def next
