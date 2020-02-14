@@ -1,50 +1,56 @@
 class CustomSet
-  attr_reader :array
+  def initialize(array)
+    @buffer = array
+  end
 
-  def initialize(arr)
-    @array = arr
+  def size
+    @buffer.size
   end
 
   def empty?
-    @array.empty?
+    @buffer.empty?
+  end
+
+  def each
+    @buffer.each { |i| yield i }
   end
 
   def member?(item)
-    @array.include?(item)
+    @buffer.include?(item)
   end
 
   def subset?(other)
-    @array.all? { |i| other.member?(i) }
+    @buffer.all? { |i| other.member?(i) }
   end
 
   def disjoint?(other)
-    @array.none? { |i| other.member?(i) }
+    @buffer.none? { |i| other.member?(i) }
   end
 
   def ==(other)
-    self.subset?(other) && other.subset?(self)
+    subset?(other) && size == other.size
   end
 
   def add(item)
-    @array << item unless member?(item)
+    @buffer << item unless member?(item)
     return self
   end
 
   def intersection(other)
     CustomSet.new(
-      @array.select { |i| other.member?(i) }
+      @buffer.select { |i| other.member?(i) }
     )
   end
 
   def difference(other)
     CustomSet.new(
-      @array.reject { |i| other.member?(i) }
+      @buffer.reject { |i| other.member?(i) }
     )
   end
 
   def union(other)
-    out = CustomSet.new(@array)
-    other.array.each { |i| out.add(i) }
+    out = CustomSet.new(@buffer)
+    other.each { |i| out.add(i) }
     return out
   end
 end

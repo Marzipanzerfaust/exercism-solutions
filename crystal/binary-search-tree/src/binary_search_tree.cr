@@ -133,27 +133,23 @@ class Node
     end
   end
 
-  protected def replace_with!(other)
-    if other
-      # If `other` is a node...
+  protected def replace_with!(other : Node)
+    # Copy its value
+    @value = other.value
 
-      # Copy its value
-      @value = other.value
+    # Make its children point to its parent
+    other.left.try &.parent = other.parent
+    other.right.try &.parent = other.parent
 
-      # Make its children point to its parent
-      other.left.try &.parent = other.parent
-      other.right.try &.parent = other.parent
+    other.replace_with!(other.left)
 
-      other.replace_with!(other.left)
+    # Now the other node should effectively be orphaned from the tree
+  end
 
-      # Now the other node should effectively be orphaned from the tree
-    else
-      # If `other` is nil, we simply remove the parent's reference to
-      # this node
-      @parent.try do |p|
-        p.left = nil if p.left == self
-        p.right = nil if p.right == self
-      end
+  protected def replace_with!(other : Nil)
+    @parent.try do |p|
+      p.left = nil if p.left == self
+      p.right = nil if p.right == self
     end
   end
 
