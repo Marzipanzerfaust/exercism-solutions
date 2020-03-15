@@ -1,4 +1,4 @@
-class Diamond
+module Diamond
   def self.make_diamond(char)
     width = (char.ord - 'A'.ord) * 2 + 1
 
@@ -14,7 +14,7 @@ class Diamond
       lines << "#{line}\n"
     end
 
-    lines += lines[0...-1].reverse
+    lines += lines[...-1].reverse
 
     return lines.join
   end
