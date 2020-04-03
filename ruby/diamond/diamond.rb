@@ -1,8 +1,9 @@
 module Diamond
   def self.make_diamond(char)
     width = (char.ord - 'A'.ord) * 2 + 1
+    height = char.ord - 'A'.ord + 1
 
-    lines = []
+    triangle = Array.new(height)
 
     ('A'..char).each_with_index do |k, i|
       line = if i == 0
@@ -11,11 +12,9 @@ module Diamond
                "#{k}#{' ' * (2 * i - 1)}#{k}".center(width)
              end
 
-      lines << "#{line}\n"
+      triangle[i] = "#{line}\n"
     end
 
-    lines += lines[...-1].reverse
-
-    return lines.join
+    return (triangle + triangle[...-1].reverse).join
   end
 end

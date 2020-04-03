@@ -21,8 +21,7 @@ class CircularBuffer {
             throw new BufferFullError;
 
         if (x) {
-            this.buffer[this.tail % this.buffer.length] = x;
-            this.tail += 1;
+            this.buffer[this.tail++ % this.buffer.length] = x;
         }
     }
 
