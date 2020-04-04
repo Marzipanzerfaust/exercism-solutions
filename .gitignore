@@ -72,6 +72,9 @@
 # lua
 /lua/**/*_spec.lua
 
+# perl5
+/perl5/**/*.t
+
 # php
 /php/**/*_test.php
 
