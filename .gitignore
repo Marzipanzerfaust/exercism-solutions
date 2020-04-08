@@ -21,6 +21,9 @@
 # Ignore `lib` directories
 **/lib
 
+# Ignore `vendor` directories
+**/vendor
+
 # bash
 /bash/**/*_test.sh
 
