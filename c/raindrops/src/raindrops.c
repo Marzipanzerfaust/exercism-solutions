@@ -1,4 +1,6 @@
 #include "raindrops.h"
+#include <stdio.h>
+#include <string.h>
 
 void convert(char result[], int drops) {
     if (drops % 3 == 0)

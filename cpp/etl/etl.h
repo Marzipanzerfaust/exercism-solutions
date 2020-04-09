@@ -1,7 +1,13 @@
+#ifndef ETL_H
+#define ETL_H
+
 #include <vector>
 #include <map>
-#include <cctype>
+
+using namespace std;
 
 namespace etl {
-    std::map<char, int> transform(const std::map<int, std::vector<char>>&);
+    map<char, int> transform(const map<int, vector<char>>&);
 }
+
+#endif

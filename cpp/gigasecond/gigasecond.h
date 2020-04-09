@@ -1,6 +1,12 @@
-#include "cmath"
+#ifndef GIGASECOND_H
+#define GIGASECOND_H
+
 #include "boost/date_time/posix_time/posix_time.hpp"
 
+using namespace boost::posix_time;
+
 namespace gigasecond {
-    boost::posix_time::ptime advance(boost::posix_time::ptime input);
+    ptime advance(const ptime&);
 }
+
+#endif

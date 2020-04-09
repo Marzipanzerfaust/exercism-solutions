@@ -1,4 +1,5 @@
 #include "difference_of_squares.h"
+#include <math.h>
 
 unsigned int sum_of_squares(unsigned int number) {
     unsigned int sum = 0;

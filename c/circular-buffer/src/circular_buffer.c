@@ -1,9 +1,10 @@
 #include "circular_buffer.h"
+#include <errno.h>
 
 circular_buffer_t* new_circular_buffer(size_t capacity) {
     circular_buffer_t* c = malloc(sizeof(circular_buffer_t));
 
-    *c = (circular_buffer_t){
+    *c = (circular_buffer_t) {
         .head = 0, .tail = 0,
         .capacity = capacity,
         .buffer = malloc(sizeof(int16_t) * capacity)

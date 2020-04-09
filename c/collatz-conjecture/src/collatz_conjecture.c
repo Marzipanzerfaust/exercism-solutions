@@ -1,7 +1,8 @@
 #include "collatz_conjecture.h"
 
 int steps(int start) {
-    if (start <= 0) return -1;
+    if (start <= 0)
+        return -1;
 
     int out = 0;
 
@@ -11,7 +12,7 @@ int steps(int start) {
         else
             start = 3 * start + 1;
 
-        ++out;
+        out += 1;
     }
 
     return out;

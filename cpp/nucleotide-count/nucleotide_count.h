@@ -4,14 +4,17 @@
 #include <string>
 #include <map>
 
+using namespace std;
+
 namespace nucleotide_count {
     class counter {
-    public:
-        counter(const std::string&);
-        std::map<char, int> nucleotide_counts() const;
-        int count(char) const;
     private:
-        std::map<char, int> inner_map;
+        map<char, int> inner_map;
+    public:
+        counter(const string&);
+
+        map<char, int> nucleotide_counts() const;
+        int count(char) const;
     };
 }
 

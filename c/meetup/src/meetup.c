@@ -1,4 +1,5 @@
 #include "meetup.h"
+#include <string.h>
 
 #define STR_EQUAL(a, b) (strcmp(a, b) == 0)
 
@@ -21,7 +22,7 @@ int meetup_day_of_month(unsigned int year, unsigned int month,
                  (STR_EQUAL(week, "last")   && is_last(date.tm_mday, &last_day)) )
                 return date.tm_mday;
 
-        ++date.tm_mday;
+        date.tm_mday += 1;
         mktime(&date);
     }
 
@@ -31,6 +32,7 @@ int meetup_day_of_month(unsigned int year, unsigned int month,
 tm_t date_new(unsigned month, unsigned day, unsigned year) {
     tm_t out = {.tm_mon = month - 1, .tm_mday = day, .tm_year = year - 1900};
     mktime(&out);
+
     return out;
 }
 

@@ -1,8 +1,8 @@
 #include "gigasecond.h"
+#include <cmath>
 
 using namespace boost::posix_time;
 
-ptime gigasecond::advance(ptime input) {
-    int x = pow(10, 9);
-    return input + seconds(x);
+ptime gigasecond::advance(const ptime& input) {
+    return input + seconds((int) pow(10, 9));
 }

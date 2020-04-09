@@ -1,9 +1,10 @@
 #include "grade_school.h"
+#include <algorithm>
 
 using namespace std;
 
 void grade_school::school::add(const string& name, int grade) {
-    vector<string>& grade_roster = inner_roster[grade];
+    auto& grade_roster = inner_roster[grade];
 
     grade_roster.push_back(name);
     sort(grade_roster.begin(), grade_roster.end());

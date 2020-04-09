@@ -33,7 +33,7 @@ list_t* filter_list(list_t* list, bool(*filter) (list_value_t value)) {
 
     for (size_t i = 0; i < list->length; ++i) {
         if (filter(list->values[i]))
-            ++new_length;
+            new_length += 1;
     }
 
     list_value_t new_values[new_length];

@@ -1,10 +1,11 @@
 #include "reverse_string.h"
+#include <algorithm>
 
-std::string reverse_string::reverse_string(std::string input) {
-    std::string output;
+using namespace std;
 
-    std::reverse(std::begin(input), std::end(input));
-    for (char c: input) output += c;
+string reverse_string::reverse_string(const string& input) {
+    auto output = string(input);
+    reverse(output.begin(), output.end());
 
     return output;
 }

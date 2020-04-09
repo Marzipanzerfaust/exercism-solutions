@@ -1,4 +1,6 @@
 #include "rational_numbers.h"
+#include <stdlib.h>
+#include <math.h>
 
 rational_t rational_new(int a, int b) {
     rational_t tmp = { a, b };
@@ -25,7 +27,8 @@ rational_t reduce(rational_t r) {
 
 // Euclid's algorithm
 int greatest_common_factor(int a, int b) {
-    if (a == 0 || b == 0) return 0;
+    if (a == 0 || b == 0)
+        return 0;
 
     while (1) {
         a %= b;

@@ -1,8 +1,12 @@
-#include "string"
-#include "stdexcept"
+#ifndef HAMMING_H
+#define HAMMING_H
+
+#include <string>
 
 using namespace std;
 
 namespace hamming {
-    int compute(string a, string b);
+    int compute(const string&, const string&);
 }
+
+#endif

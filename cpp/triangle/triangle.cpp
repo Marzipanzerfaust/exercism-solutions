@@ -1,9 +1,13 @@
 #include "triangle.h"
+#include <set>
+#include <array>
+#include <algorithm>
+#include <stdexcept>
 
 using namespace std;
 
 triangle::flavor triangle::kind(float a, float b, float c) {
-    array<float, 3> sides {a, b, c};
+    array<float, 3> sides = {a, b, c};
 
     sort(sides.begin(), sides.end());
 

@@ -9,7 +9,7 @@ nucleotide_count::counter::counter(const string& s) {
         if (c != 'A' && c != 'T' && c != 'C' && c != 'G')
             throw invalid_argument("Input must contain only A, T, C, or G");
 
-        ++inner_map[c];
+        inner_map[c] += 1;
     }
 }
 

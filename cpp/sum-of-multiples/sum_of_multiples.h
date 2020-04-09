@@ -2,12 +2,13 @@
 #define SUM_OF_MULTIPLES_H
 
 #include <vector>
-#include <numeric>
 #include <set>
 
+using namespace std;
+
 namespace sum_of_multiples {
-    int to(const std::set<int>&, int);
-    std::vector<int> multiples(int, int);
+    int to(const set<int>&, int);
+    vector<int> multiples(int, int);
 }
 
 #endif

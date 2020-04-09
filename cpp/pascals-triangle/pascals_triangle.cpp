@@ -1,5 +1,4 @@
 #include "pascals_triangle.h"
-
 #include <iostream>
 
 using namespace std;

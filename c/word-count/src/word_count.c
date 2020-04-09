@@ -1,4 +1,7 @@
 #include "word_count.h"
+#include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
 
 int word_count(char input_text[], word_count_word_t words[MAX_WORDS]) {
     // Make sure the word collection is clear to prevent false positives
@@ -13,7 +16,7 @@ int word_count(char input_text[], word_count_word_t words[MAX_WORDS]) {
         char c = tolower(*iter);
 
         if ( isalnum(c) || is_apostrophe(iter, input_text) ) {
-            ++ccount;
+            ccount += 1;
             word = realloc(word, ccount + 1);
             word[ccount-1] = c;
 
@@ -29,7 +32,7 @@ int word_count(char input_text[], word_count_word_t words[MAX_WORDS]) {
                 // If so, increment the existing counter; else, add it
                 // to the collection with a count of 1
                 if ( found > -1 ) {
-                    ++words[found].count;
+                    words[found].count += 1;
                 } else {
                     word_count_word_t new_word;
 
@@ -53,7 +56,8 @@ int word_count(char input_text[], word_count_word_t words[MAX_WORDS]) {
 
 int find(const char word[], const word_count_word_t words[MAX_WORDS]) {
     for ( size_t i = 0; i < MAX_WORDS; ++i ) {
-        if ( strcmp(word, words[i].text) == 0 ) return i;
+        if ( strcmp(word, words[i].text) == 0 )
+            return i;
     }
 
     return -1;

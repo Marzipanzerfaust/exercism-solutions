@@ -1,4 +1,5 @@
 #include "darts.h"
+#include <math.h>
 
 uint8_t score(coordinate_t c) {
     double distance = sqrt(pow(c.x, 2) + pow(c.y, 2));

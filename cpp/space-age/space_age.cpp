@@ -1,7 +1,5 @@
 #include "space_age.h"
 
-using namespace std;
-
 long space_age::space_age::seconds() const {
     return inner_seconds;
 }

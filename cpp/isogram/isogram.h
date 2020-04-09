@@ -1,10 +1,12 @@
-#include "string"
-#include "map"
-#include "regex"
-#include "algorithm"
+#ifndef ISOGRAM_H
+#define ISOGRAM_H
+
+#include <string>
 
 using namespace std;
 
 namespace isogram {
-    bool is_isogram(string input);
+    bool is_isogram(const string&);
 }
+
+#endif

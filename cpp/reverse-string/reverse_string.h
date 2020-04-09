@@ -1,7 +1,12 @@
-#include "string"
-#include "iterator"
-#include "algorithm"
+#ifndef REVERSE_STRING_H
+#define REVERSE_STRING_H
+
+#include <string>
+
+using namespace std;
 
 namespace reverse_string {
-    std::string reverse_string(std::string input);
+    string reverse_string(const string&);
 }
+
+#endif

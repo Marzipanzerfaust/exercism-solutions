@@ -1,6 +1,12 @@
-#include "string"
-#include "regex"
+#ifndef BOB_H
+#define BOB_H
+
+#include <string>
+
+using namespace std;
 
 namespace bob {
-    std::string hey(std::string input);
+    string hey(const string&);
 }
+
+#endif

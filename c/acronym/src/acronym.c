@@ -1,13 +1,16 @@
 #include "acronym.h"
+#include <stdlib.h>
+#include <ctype.h>
 
 char* abbreviate(const char* phrase) {
-    if (phrase == NULL || phrase[0] == 0) return NULL;
+    if (phrase == NULL || phrase[0] == 0)
+        return NULL;
 
     char* out = malloc(0);
 
     for (size_t i = 0, count = 0; phrase[i] != 0; ++i) {
         if (i == 0 || isspace(phrase[i-1]) || phrase[i-1] == '-') {
-            ++count;
+            count += 1;
             out = realloc(out, count + 1);  // +1 to accomodate the null terminator
             out[count-1] = toupper(phrase[i]);
         }

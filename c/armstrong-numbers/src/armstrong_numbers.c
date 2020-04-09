@@ -2,6 +2,11 @@
 // freeing the allocated memory.
 
 #include "armstrong_numbers.h"
+#include <stdbool.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <stdio.h>
 
 bool is_armstrong_number(unsigned n) {
     unsigned len = num_digits(n);
@@ -31,7 +36,7 @@ unsigned num_digits(unsigned n) {
 
     while (n > 0) {
         n /= 10;
-        ++count;
+        count += 1;
     }
 
     return count;

@@ -1,7 +1,6 @@
 #ifndef DARTS_H
 #define DARTS_H
 
-#include <math.h>
 #include <stdint.h>
 
 typedef struct coordinate_t coordinate_t;

@@ -2,11 +2,11 @@
 #define BINARY_H
 
 #include <string>
-#include <algorithm>
-#include <cmath>
+
+using namespace std;
 
 namespace binary {
-    int convert(const std::string&);
+    int convert(const string&);
 }
 
 #endif

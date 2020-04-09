@@ -1,9 +1,6 @@
 #ifndef RATIONAL_NUMBERS
 #define RATIONAL_NUMBERS
 
-#include <stdlib.h>
-#include <math.h>
-
 typedef struct {
     int numerator, denominator;
 } rational_t;

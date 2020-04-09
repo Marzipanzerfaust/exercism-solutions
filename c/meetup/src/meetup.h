@@ -3,7 +3,6 @@
 
 #include <time.h>
 #include <stdbool.h>
-#include <string.h>
 
 int meetup_day_of_month(unsigned int, unsigned int, const char[], const char[]);
 

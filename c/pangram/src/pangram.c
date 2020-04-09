@@ -1,7 +1,11 @@
 #include "pangram.h"
+#include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
 
 bool is_pangram(const char sentence[]) {
-    if (sentence == NULL) return false;
+    if (sentence == NULL)
+        return false;
 
     // Counter for unique letters encountered in the sentence; if it
     // ends up being 26, the sentence is a pangram
@@ -21,10 +25,11 @@ bool is_pangram(const char sentence[]) {
     // Compare each pair of letters in the array
     for (size_t i = 0; i < len; ++i) {
         // Ignore non-alphabetic characters
-        if (!isalpha(chars[i])) continue;
+        if (!isalpha(chars[i]))
+            continue;
 
         if (i == 0) {
-            ++letters;
+            letters += 1;
             continue;
         }
 
@@ -32,7 +37,7 @@ bool is_pangram(const char sentence[]) {
         char prev = chars[i-1];
 
         if (!isalpha(prev)) {
-            ++letters;
+            letters += 1;
             continue;
         }
 
@@ -48,7 +53,7 @@ bool is_pangram(const char sentence[]) {
         // some letters, so the string is not a pangram
 
         if (diff == 1)
-            ++letters;
+            letters += 1;
         else if (diff > 1)
             return false;
     }
@@ -60,7 +65,10 @@ int chrcmp(const void* a, const void* b) {
     char arg1 = *(char*)a;
     char arg2 = *(char*)b;
 
-    if (arg1 < arg2) return -1;
-    else if (arg1 > arg2) return 1;
-    else return 0;
+    if (arg1 < arg2)
+        return -1;
+    else if (arg1 > arg2)
+        return 1;
+    else
+        return 0;
 }

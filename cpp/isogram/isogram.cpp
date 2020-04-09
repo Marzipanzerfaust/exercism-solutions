@@ -1,8 +1,12 @@
 #include "isogram.h"
+#include <map>
+#include <regex>
+#include <algorithm>
 
 namespace isogram {
-    bool is_isogram(string input) {
-        if (input == "") return true;
+    bool is_isogram(const string& input) {
+        if (input == "")
+            return true;
 
         // Character counter
         map<char, int> counter;
@@ -16,8 +20,9 @@ namespace isogram {
 
         // Iterate through input and increment counter for each
         // character
-        for (string::size_type i = 0; i < input.size(); i++) {
-            if (++counter[input[i]] > 1) return false;
+        for (string::size_type i = 0; i < input.size(); ++i) {
+            if (++counter[input[i]] > 1)
+                return false;
         }
 
         return true;

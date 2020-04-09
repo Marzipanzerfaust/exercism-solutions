@@ -2,20 +2,22 @@
 #define PHONE_NUMBER_H
 
 #include <string>
-#include <regex>
+
+using namespace std;
 
 namespace phone_number {
     class phone_number {
     public:
-        phone_number(const std::string&);
-        std::string number() const;
-        std::string area_code() const;
+        phone_number(const string&);
 
-        operator std::string() const {
+        string number() const;
+        string area_code() const;
+
+        operator string() const {
             return inner_string;
         }
     private:
-        std::string inner_string, inner_number, inner_area_code;
+        string inner_string, inner_number, inner_area_code;
     };
 }
 

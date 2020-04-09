@@ -2,7 +2,6 @@
 #define RESISTOR_COLOR_TRIO_H
 
 #include <stdint.h>
-#include <math.h>
 
 enum color {
     BLACK, BROWN, RED, ORANGE, YELLOW,

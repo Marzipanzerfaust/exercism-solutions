@@ -3,8 +3,10 @@
 
 #include <vector>
 
+using namespace std;
+
 namespace pascals_triangle {
-    std::vector<std::vector<int>> generate_rows(int);
+    vector<vector<int>> generate_rows(int);
 }
 
 #endif

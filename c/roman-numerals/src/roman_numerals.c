@@ -1,4 +1,6 @@
 #include "roman_numerals.h"
+#include <string.h>
+#include <stdlib.h>
 
 char* to_roman_numeral(unsigned int n) {
     static unsigned int decimals[13] = {

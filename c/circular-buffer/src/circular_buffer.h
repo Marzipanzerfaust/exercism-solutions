@@ -3,7 +3,6 @@
 
 #include <stdint.h>
 #include <stdlib.h>
-#include <errno.h>
 
 typedef struct {
     size_t head, tail;

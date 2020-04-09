@@ -1,4 +1,6 @@
 #include "bob.h"
+#include <string.h>
+#include <ctype.h>
 
 char* hey_bob(const char greeting[]) {
     if (is_speech(greeting)) {
@@ -16,9 +18,9 @@ char* hey_bob(const char greeting[]) {
 }
 
 bool is_speech(const char str[]) {
-    for (size_t i = 0; str[i] != 0; ++i) {
-        if (isgraph(str[i])) return true;
-    }
+    for (size_t i = 0; str[i] != 0; ++i)
+        if (isgraph(str[i]))
+            return true;
 
     return false;
 }

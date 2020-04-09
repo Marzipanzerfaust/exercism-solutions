@@ -3,10 +3,11 @@
 
 #include <string>
 #include <map>
-#include <cctype>
+
+using namespace std;
 
 namespace scrabble_score {
-    const std::map<char, int> letter_values = {
+    const map<char, int> letter_values = {
         {'A', 1},
         {'E', 1},
         {'I', 1},
@@ -35,7 +36,7 @@ namespace scrabble_score {
         {'Z', 10}
     };
 
-    int score(const std::string&);
+    int score(const string&);
 }
 
 #endif

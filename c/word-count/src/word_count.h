@@ -1,9 +1,6 @@
 #ifndef WORD_COUNT_H
 #define WORD_COUNT_H
 
-#include <stdlib.h>
-#include <ctype.h>
-#include <string.h>
 #include <stdbool.h>
 
 #define MAX_WORDS 20            // at most MAX_WORDS can be found in the test input string

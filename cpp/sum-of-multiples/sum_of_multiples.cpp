@@ -1,4 +1,5 @@
 #include "sum_of_multiples.h"
+#include <numeric>
 
 using namespace std;
 

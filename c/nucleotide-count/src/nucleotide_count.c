@@ -1,4 +1,7 @@
 #include "nucleotide_count.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 char* count(const char dna_strand[]) {
     char* out;
@@ -12,10 +15,10 @@ char* count(const char dna_strand[]) {
 
     for (size_t i = 0; dna_strand[i] != 0; ++i) {
         switch (dna_strand[i]) {
-        case 'A': ++a; break;
-        case 'C': ++c; break;
-        case 'G': ++g; break;
-        case 'T': ++t; break;
+        case 'A': a += 1; break;
+        case 'C': c += 1; break;
+        case 'G': g += 1; break;
+        case 'T': t += 1; break;
         }
     }
 

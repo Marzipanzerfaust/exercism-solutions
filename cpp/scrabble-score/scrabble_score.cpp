@@ -1,13 +1,13 @@
 #include "scrabble_score.h"
+#include <cctype>
 
 using namespace std;
 
 int scrabble_score::score(const string& word) {
-    int sum = 0;
+    auto sum = 0;
 
-    for (auto c : word) {
+    for (auto c : word)
         sum += scrabble_score::letter_values.at(toupper(c));
-    }
 
     return sum;
 }
