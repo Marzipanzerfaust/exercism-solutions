@@ -44,11 +44,16 @@ class Say
     Say.translate(@number)
   end
 
+  # For fun: use espeak to say it out loud
+  def out_loud
+    `espeak "#{in_english}"`
+  end
+
   def self.translate(n)
     if n < 100
       return PRIMITIVES[n] if PRIMITIVES.include?(n)
 
-      PRIMITIVES.keys.reverse.each do |unit|
+      PRIMITIVES.keys.reverse_each do |unit|
         next if unit >= 100
 
         div, n = n.divmod(unit)
@@ -57,13 +62,13 @@ class Say
           return "#{PRIMITIVES[unit]}-#{PRIMITIVES[n]}"
         end
       end
-    else
-      return "one #{PRIMITIVES[n]}" if PRIMITIVES.include?(n)
+    elsif PRIMITIVES.include?(n)
+      return "one #{PRIMITIVES[n]}"
     end
 
     terms = []
 
-    PRIMITIVES.keys.reverse.each do |unit|
+    PRIMITIVES.keys.reverse_each do |unit|
       break if unit == 0
 
       div, n = n.divmod(unit)
