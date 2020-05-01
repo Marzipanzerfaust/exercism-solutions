@@ -1,4 +1,4 @@
-class RunLengthEncoding
+module RunLengthEncoding
   def self.encode(string : String)
     string.gsub(/(.)\1*/) { |match| "#{match.size if match.size != 1}#{$1}" }
   end

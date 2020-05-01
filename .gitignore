@@ -18,8 +18,8 @@
 **/*.lock
 **/*.json
 
-# Ignore `lib` directories
-**/lib
+# Ignore `lib` directories and files
+**/lib*
 
 # Ignore `vendor` directories
 **/vendor

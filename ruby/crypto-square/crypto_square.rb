@@ -8,27 +8,22 @@ class Crypto
 
     return normal if normal.size <= 1
 
-    for n in 1..Float::INFINITY
-      if n * (n - 1) >= normal.size
-        cols = n
-        rows = n - 1
-        break
-      elsif n * n >= normal.size
-        cols = n
-        rows = n
-        break
-      end
+    # Determine the slice size n
+    n = 1
+
+    until n * n >= normal.size || n * (n - 1) >= normal.size
+      n += 1
     end
 
-    arr = []
+    # Divide the normalized string into n-sized slices of characters
+    slices = normal.each_char.each_slice(n).to_a
 
-    cols.times do |j|
-      rows.times { |i| arr << (normal[i*cols+j] || ' ') }
-    end
+    # Make sure that the last slice is padded with spaces to make it the
+    # same length as all the others
+    slices.last.fill(" ", slices.last.size...n)
 
-    return arr
-      .each_slice(rows)
-      .map(&:join)
-      .join(' ')
+    # Transpose the characters and join them back into a space-separated
+    # string
+    return slices.transpose.map(&:join).join(" ")
   end
 end
