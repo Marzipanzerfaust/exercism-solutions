@@ -2,14 +2,10 @@ class Sieve
   attr_reader :primes
 
   def initialize(n)
-    if n == 1
-      @primes = []
-    else
-      @primes = (2..n).to_a
+    @primes = []
 
-      @primes.each do |x|
-        @primes.reject! { |y| y % x == 0 && y != x }
-      end
+    (2..n).each do |x|
+      @primes << x unless @primes.any? { |y| x % y == 0 }
     end
   end
 end

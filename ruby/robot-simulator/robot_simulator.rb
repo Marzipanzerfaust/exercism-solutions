@@ -30,21 +30,21 @@ class Robot
 
   def advance
     case @bearing
-    when :west
-      @x -= 1
-    when :east
-      @x += 1
     when :north
       @y += 1
+    when :east
+      @x += 1
     when :south
       @y -= 1
+    when :west
+      @x -= 1
     end
   end
 end
 
 class Simulator
   def instructions(str)
-    str.chars.map do |char|
+    str.each_char.map do |char|
       case char
       when "A" then :advance
       when "R" then :turn_right
@@ -58,7 +58,7 @@ class Simulator
     robot.orient(direction)
   end
 
-  def evaluate(robot, str)
-    instructions(str).each { |ins| robot.method(ins).call }
+  def evaluate(robot, input)
+    instructions(input).each { |comm| robot.send(comm) }
   end
 end
