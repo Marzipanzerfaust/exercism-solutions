@@ -1,6 +1,7 @@
 class Queens
   def initialize(white: [0, 3], black: [7, 3])
-    unless white.all? { |x| x >= 0 && x <= 7 } && black.all? { |x| x >= 0 && x <= 7 }
+    unless white.all? { |x| x.between?(0, 7) } &&
+        black.all? { |x| x.between?(0, 7) }
       raise ArgumentError
     end
 
@@ -17,6 +18,9 @@ class Queens
     same_pos_diagonal = x0 - x1 == y0 - y1
     same_neg_diagonal = x0 + y0 == x1 + y1
 
-    return [same_row, same_column, same_pos_diagonal, same_neg_diagonal].any?
+    return same_row ||
+      same_column ||
+      same_pos_diagonal ||
+      same_neg_diagonal
   end
 end
