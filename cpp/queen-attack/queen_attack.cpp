@@ -5,7 +5,8 @@
 
 using namespace std;
 
-queen_attack::chess_board::chess_board(const pair<int, int>& white, const pair<int, int>& black) {
+queen_attack::chess_board::chess_board(const pair<int, int>& white,
+                                       const pair<int, int>& black) {
     if (white == black)
         throw domain_error("Queen positions must be distinct");
 
@@ -21,7 +22,7 @@ pair<int, int> queen_attack::chess_board::black() const {
     return m_black;
 }
 
-// Helper function join a vector of characters together into a string
+// Helper function to join a vector of characters together into a string
 // separated by the given delimiter character
 static string join(const vector<char>& chars, char delim) {
     stringstream output;
