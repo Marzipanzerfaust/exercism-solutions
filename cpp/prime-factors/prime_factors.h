@@ -3,12 +3,8 @@
 
 #include <vector>
 
-using namespace std;
-
 namespace prime_factors {
-    vector<int> of(int, vector<int> known_factors = {});
+    std::vector<int> of(int, std::vector<int> known_factors = {});
 }
 
 #endif
-
-// vim:ft=cpp

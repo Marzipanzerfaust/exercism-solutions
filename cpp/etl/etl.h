@@ -4,10 +4,8 @@
 #include <vector>
 #include <map>
 
-using namespace std;
-
 namespace etl {
-    map<char, int> transform(const map<int, vector<char>>&);
+    std::map<char, int> transform(const std::map<int, std::vector<char>>&);
 }
 
 #endif

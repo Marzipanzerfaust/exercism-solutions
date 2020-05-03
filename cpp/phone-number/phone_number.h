@@ -3,21 +3,18 @@
 
 #include <string>
 
-using namespace std;
-
 namespace phone_number {
     class phone_number {
+        std::string inner_string, inner_number, inner_area_code;
     public:
-        phone_number(const string&);
+        phone_number(const std::string&);
 
-        string number() const;
-        string area_code() const;
+        std::string number() const;
+        std::string area_code() const;
 
-        operator string() const {
+        operator std::string() const {
             return inner_string;
         }
-    private:
-        string inner_string, inner_number, inner_area_code;
     };
 }
 

@@ -3,10 +3,8 @@
 
 #include <string>
 
-using namespace std;
-
 namespace roman_numerals {
-    const string romans[13] = {
+    const std::string romans[13] = {
         "M", "CM",
         "D", "CD",
         "C", "XC",
@@ -26,7 +24,7 @@ namespace roman_numerals {
         1
     };
 
-    string convert(int);
+    std::string convert(int);
 }
 
 #endif

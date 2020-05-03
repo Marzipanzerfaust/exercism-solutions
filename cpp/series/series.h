@@ -4,11 +4,9 @@
 #include <vector>
 #include <string>
 
-using namespace std;
-
 namespace series {
-    vector<int> digits(const string&);
-    vector<vector<int>> slice(const string&, unsigned);
+    std::vector<int> digits(const std::string&);
+    std::vector<std::vector<int>> slice(const std::string&, unsigned);
 }
 
 #endif

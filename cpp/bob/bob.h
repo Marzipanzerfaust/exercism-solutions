@@ -3,10 +3,8 @@
 
 #include <string>
 
-using namespace std;
-
 namespace bob {
-    string hey(const string&);
+    std::string hey(const std::string&);
 }
 
 #endif

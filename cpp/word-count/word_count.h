@@ -6,12 +6,10 @@
 #include <map>
 #include <regex>
 
-using namespace std;
-
 namespace word_count {
-    map<string, int> words(const string&);
-    vector<string> tokenize(const string&, const regex&);
-    string downcase(const string&);
+    std::map<std::string, int> words(const std::string&);
+    std::vector<std::string> tokenize(const std::string&, const std::regex&);
+    std::string downcase(const std::string&);
 }
 
 #endif

@@ -3,10 +3,8 @@
 
 #include <string>
 
-using namespace std;
-
 namespace hamming {
-    int compute(const string&, const string&);
+    int compute(const std::string&, const std::string&);
 }
 
 #endif

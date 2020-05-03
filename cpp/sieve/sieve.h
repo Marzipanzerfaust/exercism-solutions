@@ -3,10 +3,8 @@
 
 #include <vector>
 
-using namespace std;
-
 namespace sieve {
-    vector<int> primes(int);
+    std::vector<int> primes(int);
 }
 
 #endif

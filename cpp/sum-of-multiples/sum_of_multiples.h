@@ -4,11 +4,9 @@
 #include <vector>
 #include <set>
 
-using namespace std;
-
 namespace sum_of_multiples {
-    int to(const set<int>&, int);
-    vector<int> multiples(int, int);
+    int to(const std::set<int>&, int);
+    std::vector<int> multiples(int, int);
 }
 
 #endif

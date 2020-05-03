@@ -3,10 +3,8 @@
 
 #include <string>
 
-using namespace std;
-
 namespace reverse_string {
-    string reverse_string(const string&);
+    std::string reverse_string(const std::string&);
 }
 
 #endif

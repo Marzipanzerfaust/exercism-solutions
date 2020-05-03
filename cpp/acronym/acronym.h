@@ -3,10 +3,8 @@
 
 #include <string>
 
-using namespace std;
-
 namespace acronym {
-    string acronym(const string&);
+    std::string acronym(const std::string&);
 }
 
 #endif

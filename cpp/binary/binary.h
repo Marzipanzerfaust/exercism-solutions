@@ -3,10 +3,8 @@
 
 #include <string>
 
-using namespace std;
-
 namespace binary {
-    int convert(const string&);
+    int convert(const std::string&);
 }
 
 #endif

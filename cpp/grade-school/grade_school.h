@@ -5,17 +5,14 @@
 #include <map>
 #include <vector>
 
-using namespace std;
-
 namespace grade_school {
     class school {
-    private:
-        map<int, vector<string>> inner_roster;
+        std::map<int, std::vector<std::string>> inner_roster;
     public:
-        void add(const string&, int);
+        void add(const std::string&, int);
 
-        map<int, vector<string>> roster() const;
-        vector<string> grade(int) const;
+        std::map<int, std::vector<std::string>> roster() const;
+        std::vector<std::string> grade(int) const;
     };
 }
 

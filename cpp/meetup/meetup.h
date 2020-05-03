@@ -4,61 +4,57 @@
 #include <string>
 #include <boost/date_time/gregorian/gregorian.hpp>
 
-using namespace std;
-using namespace boost::gregorian;
-
 namespace meetup {
     class scheduler {
-    public:
-        scheduler(int, int);
-
-        date find(const string&, int) const;
-        date monteenth() const;
-        date tuesteenth() const;
-        date wednesteenth() const;
-        date thursteenth() const;
-        date friteenth() const;
-        date saturteenth() const;
-        date sunteenth() const;
-        date first_monday() const;
-        date first_tuesday() const;
-        date first_wednesday() const;
-        date first_thursday() const;
-        date first_friday() const;
-        date first_saturday() const;
-        date first_sunday() const;
-        date second_monday() const;
-        date second_tuesday() const;
-        date second_wednesday() const;
-        date second_thursday() const;
-        date second_friday() const;
-        date second_saturday() const;
-        date second_sunday() const;
-        date third_monday() const;
-        date third_tuesday() const;
-        date third_wednesday() const;
-        date third_thursday() const;
-        date third_friday() const;
-        date third_saturday() const;
-        date third_sunday() const;
-        date fourth_monday() const;
-        date fourth_tuesday() const;
-        date fourth_wednesday() const;
-        date fourth_thursday() const;
-        date fourth_friday() const;
-        date fourth_saturday() const;
-        date fourth_sunday() const;
-        date last_monday() const;
-        date last_tuesday() const;
-        date last_wednesday() const;
-        date last_thursday() const;
-        date last_friday() const;
-        date last_saturday() const;
-        date last_sunday() const;
-    private:
         int month;
         int year;
         int last_day;
+    public:
+        scheduler(int, int);
+
+        boost::gregorian::date find(const std::string&, int) const;
+        boost::gregorian::date monteenth() const;
+        boost::gregorian::date tuesteenth() const;
+        boost::gregorian::date wednesteenth() const;
+        boost::gregorian::date thursteenth() const;
+        boost::gregorian::date friteenth() const;
+        boost::gregorian::date saturteenth() const;
+        boost::gregorian::date sunteenth() const;
+        boost::gregorian::date first_monday() const;
+        boost::gregorian::date first_tuesday() const;
+        boost::gregorian::date first_wednesday() const;
+        boost::gregorian::date first_thursday() const;
+        boost::gregorian::date first_friday() const;
+        boost::gregorian::date first_saturday() const;
+        boost::gregorian::date first_sunday() const;
+        boost::gregorian::date second_monday() const;
+        boost::gregorian::date second_tuesday() const;
+        boost::gregorian::date second_wednesday() const;
+        boost::gregorian::date second_thursday() const;
+        boost::gregorian::date second_friday() const;
+        boost::gregorian::date second_saturday() const;
+        boost::gregorian::date second_sunday() const;
+        boost::gregorian::date third_monday() const;
+        boost::gregorian::date third_tuesday() const;
+        boost::gregorian::date third_wednesday() const;
+        boost::gregorian::date third_thursday() const;
+        boost::gregorian::date third_friday() const;
+        boost::gregorian::date third_saturday() const;
+        boost::gregorian::date third_sunday() const;
+        boost::gregorian::date fourth_monday() const;
+        boost::gregorian::date fourth_tuesday() const;
+        boost::gregorian::date fourth_wednesday() const;
+        boost::gregorian::date fourth_thursday() const;
+        boost::gregorian::date fourth_friday() const;
+        boost::gregorian::date fourth_saturday() const;
+        boost::gregorian::date fourth_sunday() const;
+        boost::gregorian::date last_monday() const;
+        boost::gregorian::date last_tuesday() const;
+        boost::gregorian::date last_wednesday() const;
+        boost::gregorian::date last_thursday() const;
+        boost::gregorian::date last_friday() const;
+        boost::gregorian::date last_saturday() const;
+        boost::gregorian::date last_sunday() const;
     };
 }
 

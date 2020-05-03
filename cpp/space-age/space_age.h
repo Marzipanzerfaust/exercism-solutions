@@ -12,6 +12,7 @@ namespace space_age {
     const float neptune_seconds = earth_seconds * 164.79132;
 
     class space_age {
+        long inner_seconds;
     public:
         space_age(long s) : inner_seconds(s) {};
 
@@ -24,8 +25,6 @@ namespace space_age {
         float on_saturn() const;
         float on_uranus() const;
         float on_neptune() const;
-    private:
-        long inner_seconds;
     };
 }
 

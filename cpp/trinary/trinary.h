@@ -3,12 +3,8 @@
 
 #include <string>
 
-using namespace std;
-
 namespace trinary {
-    int to_decimal(const string&);
+    int to_decimal(const std::string&);
 }
 
 #endif
-
-// vim:ft=cpp

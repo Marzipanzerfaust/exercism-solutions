@@ -3,12 +3,10 @@
 
 #include <string>
 
-using namespace std;
-
 namespace food_chain {
-    string verse(int);
-    string verses(int, int);
-    string sing();
+    std::string verse(int);
+    std::string verses(int, int);
+    std::string sing();
 }
 
 #endif

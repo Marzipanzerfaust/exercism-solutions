@@ -3,10 +3,8 @@
 
 #include <string>
 
-using namespace std;
-
 namespace raindrops {
-    string convert(int);
+    std::string convert(int);
 }
 
 #endif

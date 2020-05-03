@@ -4,10 +4,8 @@
 #include <string>
 #include <unordered_map>
 
-using namespace std;
-
 namespace rna_transcription {
-    const unordered_map<char, char> dna_to_rna = {
+    const std::unordered_map<char, char> dna_to_rna = {
         {'G', 'C'},
         {'C', 'G'},
         {'T', 'A'},
@@ -15,9 +13,7 @@ namespace rna_transcription {
     };
 
     char to_rna(char);
-    string to_rna(const string&);
+    std::string to_rna(const std::string&);
 }
 
 #endif
-
-// vim:ft=cpp

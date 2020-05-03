@@ -45,13 +45,13 @@ robot_name::robot::robot() {
     if (!initialized)
         init_names();
 
-    _name = *next_name_ptr++;
+    m_name = *next_name_ptr++;
 }
 
 string robot_name::robot::name() const {
-    return _name;
+    return m_name;
 }
 
 void robot_name::robot::reset() {
-    _name = *next_name_ptr++;
+    m_name = *next_name_ptr++;
 }
