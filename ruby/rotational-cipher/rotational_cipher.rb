@@ -1,16 +1,23 @@
 module RotationalCipher
+  ALPHABET = ("a".."z").to_a
+  ALPHABET_UPPER = ALPHABET.map(&:upcase)
+
   def self.rotate(str, n)
     str.each_char
-      .map { |c| shift(c, n) }
+      .map { |c| encode(c, n) }
       .join
   end
 
-  def self.shift(char, n)
+  def self.encode(char, n)
     case char
     when /[a-z]/
-      ((char.ord % 97 + n) % 26 + 97).chr
+      ALPHABET[
+        (ALPHABET.index(char) + n) % ALPHABET.size
+      ]
     when /[A-Z]/
-      ((char.ord % 65 + n) % 26 + 65).chr
+      ALPHABET_UPPER[
+        (ALPHABET_UPPER.index(char) + n) % ALPHABET.size
+      ]
     else
       char
     end
