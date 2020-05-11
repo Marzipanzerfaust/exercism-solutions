@@ -1,8 +1,6 @@
-class ArmstrongNumbers
+module ArmstrongNumbers
   def self.include?(n)
     str = n.to_s
-    p = str.size
-
-    return n == str.chars.reduce(0) { |sum, char| sum + char.to_i ** p }
+    return n == str.chars.sum { |char| char.to_i ** str.size }
   end
 end

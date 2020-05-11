@@ -1,11 +1,12 @@
 #include "nth_prime.h"
+
 #include <vector>
 #include <stdexcept>
 #include <algorithm>
 
 using namespace std;
 
-static vector<unsigned> primes = {2};
+static vector<unsigned> primes = {2, 3};
 
 unsigned nth_prime::nth(unsigned n) {
     if (n == 0)
@@ -14,9 +15,9 @@ unsigned nth_prime::nth(unsigned n) {
     if (n <= primes.size())
         return primes[n - 1];
 
-    auto next_prime = *primes.rbegin();
+    auto next_prime = *primes.rbegin() + 2;
 
-    while (++next_prime) {
+    while (true) {
         if (none_of(primes.begin(), primes.end(),
                     [next_prime](int p) { return next_prime % p == 0; })) {
             primes.push_back(next_prime);
@@ -24,6 +25,8 @@ unsigned nth_prime::nth(unsigned n) {
             if (primes.size() == n)
                 break;
         }
+
+        next_prime += 2;
     }
 
     return next_prime;
