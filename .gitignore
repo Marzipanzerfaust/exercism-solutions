@@ -68,6 +68,11 @@
 /erlang/**/test
 /erlang/**/rebar.config
 
+# java
+/java/build.gradle
+/java/**/build
+/java/**/test
+
 # javascript
 /javascript/**/*.spec.js
 /javascript/**/*.config.js
