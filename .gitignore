@@ -98,6 +98,7 @@
 /ruby/**/Gemfile.lock
 
 # rust
+!/rust/**/lib.rs
 /rust/**/tests
 /rust/**/Cargo.toml
 
