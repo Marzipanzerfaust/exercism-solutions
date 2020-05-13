@@ -1,4 +1,4 @@
-class Translation
+module Translation
   CODON_TO_PROTEIN = {
     "AUG" => "Methionine",
     "UUU" => "Phenylalanine",
@@ -26,7 +26,7 @@ class Translation
   def self.of_rna(strand)
     polypeptide = []
 
-    strand.chars.each_slice(3).map(&:join).each do |c|
+    strand.each_char.each_slice(3).map(&:join).each do |c|
       raise InvalidCodonError if of_codon(c).nil?
       break if of_codon(c) == "STOP"
 
