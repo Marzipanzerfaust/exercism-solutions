@@ -69,7 +69,7 @@
 /erlang/**/rebar.config
 
 # java
-/java/build.gradle
+/java/**/build.gradle
 /java/**/build
 /java/**/test
 
