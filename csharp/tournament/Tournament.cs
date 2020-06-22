@@ -20,7 +20,6 @@ public static class Tournament
         var lines = input.Split('\n');
 
         foreach (var line in lines) {
-            // var (a, b, result) = line.Split(';');
             var tokens = line.Split(';');
             var a = tokens[0];
             var b = tokens[1];
@@ -61,8 +60,6 @@ public static class Tournament
             else
                 return points[b].CompareTo(points[a]);
         });
-
-        // var output = "Team                           | MP |  W |  D |  L |  P";
 
         var writer = StreamWriter(outStream);
 

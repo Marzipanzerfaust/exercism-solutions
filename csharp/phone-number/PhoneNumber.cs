@@ -12,7 +12,7 @@ public class PhoneNumber
 
         if (match.Success) {
             var groups = match.Groups;
-            return String.Format("{0}{1}{2}", groups[1], groups[2], groups[3]);
+            return $"{groups[1]}{groups[2]}{groups[3]}";
         } else {
             throw new ArgumentException();
         }
