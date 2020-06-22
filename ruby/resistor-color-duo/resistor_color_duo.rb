@@ -1,10 +1,21 @@
 module ResistorColorDuo
-  COLORS = %w(black brown red orange yellow green blue violet grey white)
+  COLORS = {
+    "black" => 0,
+    "brown" => 1,
+    "red" => 2,
+    "orange" => 3,
+    "yellow" => 4,
+    "green" => 5,
+    "blue" => 6,
+    "violet" => 7,
+    "grey" => 8,
+    "white" => 9
+  }
 
   def self.value(arr)
     arr
       .reverse_each
       .with_index
-      .sum { |n, i| COLORS.index(n) * 10 ** i }
+      .sum { |n, i| COLORS[n] * 10 ** i }
   end
 end

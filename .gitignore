@@ -79,6 +79,7 @@
 
 # lua
 /lua/**/*_spec.lua
+/lua/**/.busted
 
 # perl5
 /perl5/**/*.t

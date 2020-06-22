@@ -1,11 +1,18 @@
 module ResistorColorDuo
-  COLORS = %w(black brown red orange yellow green blue violet grey white)
+  COLORS = {
+    "black" => 0,
+    "brown" => 1,
+    "red" => 2,
+    "orange" => 3,
+    "yellow" => 4,
+    "green" => 5,
+    "blue" => 6,
+    "violet" => 7,
+    "grey" => 8,
+    "white" => 9
+  }
 
   def self.value(bands : Array(String)) : Int
-    color_value(bands[0]) * 10 + color_value(bands[1])
-  end
-
-  private def self.color_value(band : String) : Int
-    COLORS.index(band).as(Int)
+    COLORS[bands[0]] * 10 + COLORS[bands[1]]
   end
 end
