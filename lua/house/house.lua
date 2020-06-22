@@ -1,28 +1,54 @@
-local module = {}
+local objects = {
+  "house that Jack built",
+  "malt",
+  "rat",
+  "cat",
+  "dog",
+  "cow with the crumpled horn",
+  "maiden all forlorn",
+  "man all tattered and torn",
+  "priest all shaven and shorn",
+  "rooster that crowed in the morn",
+  "farmer sowing his corn",
+  "horse and the hound and the horn"
+}
 
-function module.house(n)
-  lines = {
-    'the house ',
-    'the malt that lay in ',
-    'the rat that ate ',
-    'the cat that killed ',
-    'the dog that worried ',
-    'the cow with the crumpled horn that tossed ',
-    'the maiden all forlorn that milked ',
-    'the man all tattered and torn that kissed ',
-    'the priest all shaved and shorn that married ',
-    'the rooster that crowed in the morn that woke ',
-    'the farmer sowing his corn that kept ',
-    'the horse and the hound and the horn that belonged to '
-  }
+local actions = {
+  "lay in",
+  "ate",
+  "killed",
+  "worried",
+  "tossed",
+  "milked",
+  "kissed",
+  "married",
+  "woke",
+  "kept",
+  "belonged to",
+}
 
-  output = 'This is ' .. lines[1]
-  for i = 2, n do
-    output = output .. "\n" ..lines[i]
+local house = {}
+
+house.verse = function(which)
+  local lines = {"This is the " .. objects[which]}
+
+  for j = which - 1, 1, -1 do
+    table.insert(lines, string.format("that %s the %s", actions[j], objects[j]))
   end
-  output = ouput .. 'that Jack built.'
 
-  return output
+  lines[#lines] = lines[#lines] .. "."
+
+  return table.concat(lines, "\n")
 end
 
-return module
+house.recite = function()
+  verses = {}
+
+  for i = 1, #objects do
+    table.insert(verses, house.verse(i))
+  end
+
+  return table.concat(verses, "\n")
+end
+
+return house

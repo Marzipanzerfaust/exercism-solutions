@@ -25,8 +25,7 @@ module House
     "married",
     "woke",
     "kept",
-    "belonged to",
-    nil
+    "belonged to"
   ]
 
   def self.recite
