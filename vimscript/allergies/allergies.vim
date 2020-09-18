@@ -6,7 +6,7 @@ let s:allergens = [
 let s:scores = [1, 2, 4, 8, 16, 32, 64, 128]
 
 function! AllergicTo(score, allergy) abort
-  return and(a:score, s:scores[index(s:allergens, a:allergy)]) != 0
+  return and(a:score, s:scores[index(s:allergens, a:allergy)])
 endfunction
 
 function! List(score) abort

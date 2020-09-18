@@ -1,13 +1,6 @@
 let s:alphabet = split("abcdefghijklmnopqrstuvwxyz", '\zs')
 
 function! IsPangram(sentence) abort
-  let lower = tolower(a:sentence)
-
-  for letter in s:alphabet
-    if lower !~ letter
-      return 0
-    endif
-  endfor
-
-  return 1
+  return len(a:sentence) >= 26 &&
+        \ uniq(sort(split(tolower(substitute(a:sentence, '\A', "", "g")), '\zs'))) == s:alphabet
 endfunction

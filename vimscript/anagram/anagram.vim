@@ -4,7 +4,7 @@ endfunction
 
 " One string is an anagram of the other if the sorted, lowercased array
 " of its characters is equal to that of the other
-function! s:IsAnagram(a, b)
+function! s:IsAnagram(a, b) abort
   let a = tolower(a:a)
   let b = tolower(a:b)
 

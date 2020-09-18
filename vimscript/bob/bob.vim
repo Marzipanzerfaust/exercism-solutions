@@ -1,29 +1,27 @@
 function! Response(remark) abort
-  let is_blank = s:IsBlank(a:remark)
-  let is_question = s:IsQuestion(a:remark)
-  let is_yell = s:IsYell(a:remark)
-
-  if is_blank
+  if s:is_blank(a:remark)
     return "Fine. Be that way!"
-  elseif is_question && is_yell
-    return "Calm down, I know what I'm doing!"
-  elseif is_question
-    return "Sure."
-  elseif is_yell
+  elseif s:is_question(a:remark)
+    if s:is_yell(a:remark)
+      return "Calm down, I know what I'm doing!"
+    else
+      return "Sure."
+    endif
+  elseif s:is_yell(a:remark)
     return "Whoa, chill out!"
   else
     return "Whatever."
   endif
 endfunction
 
-function! s:IsBlank(text)
-  return a:text !~ '[[:graph:]]'
+function! s:is_blank(text)
+  return a:text !~ '\S'
 endfunction
 
-function! s:IsQuestion(text)
+function! s:is_question(text)
   return trim(a:text) =~ '?$'
 endfunction
 
-function! s:IsYell(text)
-  return a:text =~ '[[:upper:]]' && a:text !~ '[[:lower:]]'
+function! s:is_yell(text)
+  return a:text =~ '\u' && a:text !~ '\l'
 endfunction

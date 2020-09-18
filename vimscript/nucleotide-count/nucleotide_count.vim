@@ -1,19 +1,17 @@
 function! NucleotideCounts(strand) abort
   let counter = {
-        \ 'A': 0,
-        \ 'C': 0,
-        \ 'T': 0,
-        \ 'G': 0
+        \ "A": 0,
+        \ "C": 0,
+        \ "T": 0,
+        \ "G": 0
         \ }
 
-  for idx in range(strchars(a:strand))
-    let char = a:strand[idx]
-
-    if !has_key(counter, char)
+  for char in split(a:strand, '\zs')
+    try
+      let counter[char] += 1
+    catch /E734/
       throw "Invalid nucleotide in strand"
-    endif
-
-    let counter[char] += 1
+    endtry
   endfor
 
   return counter
