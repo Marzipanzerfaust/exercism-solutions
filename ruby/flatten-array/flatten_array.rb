@@ -1,4 +1,4 @@
-class FlattenArray
+module FlattenArray
   def self.flatten(arr)
     arr.each_with_object([]) do |item, out|
       next if item.nil?

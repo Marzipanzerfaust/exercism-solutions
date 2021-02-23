@@ -1,9 +1,11 @@
 class BinarySearch
   attr_reader :list, :middle
 
-  def initialize(array)
-    array.each_cons(2) do |a, b|
-      raise ArgumentError if a > b
+  def initialize(array, check = true)
+    if check
+      array.each_cons(2) do |a, b|
+        raise ArgumentError if a > b
+      end
     end
 
     @list = array
@@ -21,11 +23,11 @@ class BinarySearch
 
     case @list[@middle] <=> n
     when -1
-      BinarySearch.new(@list[@middle..]).search_for(n) + @middle
+      BinarySearch.new(@list[@middle..], false).search_for(n) + @middle
     when 0
       @middle
     when 1
-      BinarySearch.new(@list[...@middle]).search_for(n)
+      BinarySearch.new(@list[...@middle], false).search_for(n)
     end
   end
 end
