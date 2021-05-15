@@ -15,15 +15,14 @@ struct Int
     "I" => 1
   }
 
-  def to_roman : String
-    output = [] of String
-    n = self
+  def to_roman
+    String.build do |output|
+      n = self
 
-    ROMAN_NUMERALS.each do |roman, decimal|
-      quotient, n = n.divmod(decimal)
-      output << roman * quotient
+      ROMAN_NUMERALS.each do |roman, decimal|
+        quotient, n = n.divmod(decimal)
+        output << roman * quotient
+      end
     end
-
-    return output.join
   end
 end

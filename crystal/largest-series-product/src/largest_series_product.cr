@@ -1,8 +1,7 @@
 struct Series
-  def initialize(@digits : String)
-  end
+  def initialize(@digits : String) end
 
-  def largest_product(n : Int) : Int
+  def largest_product(n)
     raise ArgumentError.new if n > @digits.size
 
     return 1 if n.zero?
@@ -10,7 +9,7 @@ struct Series
     return @digits
       .each_char
       .map(&.to_u64)
-      .cons(n, reuse: true)
+      .cons(n, true)
       .map(&.product)
       .max
   end

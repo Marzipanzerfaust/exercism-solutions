@@ -1,5 +1,5 @@
 module ArmstrongNumbers
-  def self.armstrong_number?(n : Int) : Bool
+  def self.armstrong_number?(n)
     str = n.to_s
 
     return str

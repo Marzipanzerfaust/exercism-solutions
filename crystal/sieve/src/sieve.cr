@@ -1,5 +1,5 @@
 module Primes
-  def self.sieve(n : Int) : Array(Int32)
+  def self.sieve(n)
     return [] of Int32 if n == 1
 
     primes = (2..n).to_a

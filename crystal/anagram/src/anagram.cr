@@ -3,12 +3,12 @@ class String
     a = self.downcase
     b = other.downcase
 
-    return a.chars.sort == b.chars.sort && a != b
+    return a != b && a.chars.sort == b.chars.sort
   end
 end
 
 module Anagram
-  def self.find(str : String, arr : Array(String)) : Array(String)
+  def self.find(str, arr)
     arr.select(&.anagram_of?(str))
   end
 end

@@ -1,4 +1,4 @@
-module Grains
+class Grains
   def self.square(n : Int) : UInt64
     raise ArgumentError.new unless 0 < n <= 64
 

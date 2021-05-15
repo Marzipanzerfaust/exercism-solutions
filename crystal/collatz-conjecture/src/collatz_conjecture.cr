@@ -1,5 +1,5 @@
-class CollatzConjecture
-  def self.steps(n : Int) : Int
+module CollatzConjecture
+  def self.steps(n)
     raise ArgumentError.new if n <= 0
 
     steps = 0

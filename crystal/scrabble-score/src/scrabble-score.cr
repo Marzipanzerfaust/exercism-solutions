@@ -1,15 +1,23 @@
 module ScrabbleScore
-  def self.score(str : String) : Int
-    str.gsub(/\W/, nil).upcase.each_char.sum do |letter|
-      case letter.to_s
-      when /[AEIOULNRST]/ then 1
-      when /[DG]/ then 2
-      when /[BCMP]/ then 3
-      when /[FHVWY]/ then 4
-      when /K/ then 5
-      when /[JX]/ then 8
-      when /[QZ]/ then 10
-      else 0
+  def self.score(str)
+    str.each_char.sum do |letter|
+      case letter.upcase
+      when 'A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T'
+        1
+      when 'D', 'G'
+        2
+      when 'B', 'C', 'M', 'P'
+        3
+      when 'F', 'H', 'V', 'W', 'Y'
+        4
+      when 'K'
+        5
+      when 'J', 'X'
+        8
+      when 'Q', 'Z'
+        10
+      else
+        0
       end
     end
   end

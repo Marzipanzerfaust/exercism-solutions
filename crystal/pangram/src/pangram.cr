@@ -1,12 +1,13 @@
 module Pangram
   ALPHABET = ('a'..'z').to_a
 
-  def self.pangram?(str : String) : Bool
+  def self.pangram?(str)
     str
       .downcase
-      .gsub(/[^a-z]/, nil)
-      .chars
+      .each_char
+      .select(&.ascii_lowercase?)
       .uniq
+      .to_a
       .sort == ALPHABET
   end
 end

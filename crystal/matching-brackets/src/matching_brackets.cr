@@ -2,7 +2,7 @@ module MatchingBrackets
   # Maps each closer with its corresponding opener
   MAP = { ']' => '[', '}' => '{', ')' => '(' }
 
-  def self.valid?(str : String) : Bool
+  def self.valid?(str)
     stack = [] of Char
 
     str.each_char do |char|

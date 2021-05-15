@@ -1,5 +1,5 @@
 module Hamming
-  def self.compute(a : String, b : String) : Int
+  def self.distance(a, b)
     raise ArgumentError.new if a.size != b.size
 
     a.size.times.count { |i| a[i] != b[i] }

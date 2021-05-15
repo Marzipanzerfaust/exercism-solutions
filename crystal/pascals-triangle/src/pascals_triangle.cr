@@ -1,7 +1,7 @@
 module PascalsTriangle
   @@triangle = [[1]]
 
-  def self.rows(n : Int)
+  def self.rows(n)
     raise ArgumentError.new if n < 0
 
     return [] of Int32 if n == 0
@@ -11,7 +11,7 @@ module PascalsTriangle
 
       row << 1
 
-      @@triangle[i - 1].each_cons(2, reuse: true) do |(a, b)|
+      @@triangle[i - 1].each_cons_pair do |a, b|
         row << a + b
       end
 

@@ -1,5 +1,5 @@
 module Raindrops
-  def self.drops(n : Int) : String
+  def self.convert(n)
     output = [] of String
 
     output << "Pling" if n.divisible_by?(3)

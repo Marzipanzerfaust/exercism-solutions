@@ -1,8 +1,5 @@
-# XXX
-
+# Please implement your solution to react in this file
 module React
-  alias Cell = InputCell | ComputeCell
-
   class InputCell
     property value : Int32
 
@@ -11,24 +8,12 @@ module React
   end
 
   class ComputeCell
-    @a : Cell
-    @b : Cell?
+    def initialize(@input : InputCell, &block : Int32 -> Int32)
+      @formula = block
+    end
 
-    # def initialize(@a : Cell, &block)
-    #   @b = nil
-    #   @formula = block
-    # end
-    #
-    # def initialize(@a : Cell, @b : Cell, &block)
-    #   @formula = block
-    # end
-
-    def value : Int32
-      if @b
-        @formula.call(@a.value, @b.not_nil!.value)
-      else
-        @formula.call(@a.value)
-      end
+    def value
+      @formula.call(@input.value)
     end
   end
 end
